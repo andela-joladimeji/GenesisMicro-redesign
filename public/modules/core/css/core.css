@@ -1,0 +1,174 @@
+
+body {
+    overflow: hidden;
+}
+
+a.scroll {
+  color: blue;
+  text-decoration: none;
+}
+
+div.side-bar{
+  position: fixed;
+  right: 0;
+  top: 50%;
+}
+
+ul.scroll-balls {
+  list-style: none;
+  font-size: 1.2em;
+  padding: 0;
+  color: red;
+  display: block;
+  text-align: right;
+}
+
+li.side-nav{
+  display: block;
+}
+
+li.side-nav a.scroll {
+  display: block;
+}
+
+li.side-nav a.scroll span.scroll-span {
+  display: inline-block;
+  transform-origin: 100% 50%;
+  -webkit-transform-origin: 100% 50%;
+  -moz-transform-origin: 100% 50%;
+  -webkit-transform: rotateY(90deg); 
+  opacity: 0;
+  position: relative;
+  right: 0;  
+  transition: -webkit-transform .3s ease-in-out, opacity .3s ease-in-out, right .3s ease-in-out;
+}
+
+li.side-nav:hover a.scroll span.scroll-span, a.scroll:focus span.scroll-span {
+  opacity: 1;
+  -webkit-transform: rotateY(0deg); 
+}
+
+li.side-nav:focus a.scroll span.scroll-span, a.scroll:focus span.scroll-span {
+  right: 10px;
+}
+
+a.scroll:focus {
+  outline: none;
+}
+
+a.scroll:focus:after {
+  content: '\25C0';
+}
+
+a.scroll:after {
+  content: '\25CF';
+  padding: 0 5px;
+}
+
+
+.content {
+	margin-top: 50px;
+}
+
+.undecorated-link:hover {
+	text-decoration: none;
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+	display: none !important;
+}
+
+.black{
+	background-color: #000;
+	height: 20px;
+}
+
+header h4{
+	color: #fff;
+}
+
+header ul li a{
+	color: #fff;
+}
+
+header li{
+	display: inline-block;
+	padding: 0 12px;
+}
+
+.menu{
+	margin-top: 25px;
+	background-color: rgba(0,0,0,0.2);
+}
+
+.container-fluid{
+	padding: 0;
+	margin: 0;
+}
+
+header{
+	margin-bottom: 100px;
+}
+.first-div-img{
+	padding-top: 400px !important;
+  background-color: #000;
+  background-image: url('/modules/core/img/Group-of-People2.gif') !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
+}
+
+.first-div{
+	/*padding-top: 320px !important;*/
+  background-color: transparent;
+  background-image: -webkit-linear-gradient(#000, rgba(0, 0, 0, 0.5) 0) !important;
+  background-image: -o-linear-gradient(#000, rgba(0, 0, 0, 0.5) 56%);
+  background-image: linear-gradient(#000, rgba(0, 0, 0, 0.5) 56%);
+  height: 100%;
+}
+
+.third-div{
+/*	padding-top: 320px !important;*/
+  background-color: transparent;
+  background-image: -webkit-linear-gradient(#000, rgba(0, 0, 0, 0.5) 0) !important;
+  background-image: -o-linear-gradient(#000, rgba(0, 0, 0, 0.5) 56%);
+  background-image: linear-gradient(#000, rgba(0, 0, 0, 0.5) 56%);
+  height: 100%;
+}
+
+.third-div-img{
+	padding-top: 400px !important;
+  background-color: #000;
+  background-image: url('/modules/core/img/consult.jpg') !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
+}
+
+
+.fifth-div{
+/*	padding-top: 400px !important;*/
+  background-color: transparent;
+  background-image: -webkit-linear-gradient(#000, rgba(0, 0, 0, 0.5) 0) !important;
+  background-image: -o-linear-gradient(#000, rgba(0, 0, 0, 0.5) 56%);
+  background-image: linear-gradient(#000, rgba(0, 0, 0, 0.5) 56%);
+  height: 100%;
+}
+
+.fifth-div-img{
+	padding-top: 400px !important;
+  background-color: #000;
+  background-image: url('/modules/core/img/Contact-Slashsquare.jpg') !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
+}
+
+footer{
+  height: 300px;
+}
+
+
+
+
+
