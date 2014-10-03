@@ -1,33 +1,123 @@
-<div class="container" data-ng-controller="HeaderController">
-    <div class="header col-md-12 col-xs-12">
-        
-        <div class="col-md-4">
-            <h4>GENESIS MICRO SOLUTIONS, INC.</h4>
+<div data-ng-controller="HeaderController">
+    <!-- <div class="header-container"> 
+        <div class="col-md-12 col-xs-12">
+            
+            <div class="logo col-md-4">
+                <h4><a href= "/#!">GENESIS MICRO<br>SOLUTIONS, INC.</a></h4>
+            </div>
+            <! Desktop menu -->
+            <!-- <div class="menu col-md-6 col-xs-12 hidden-xs pull-right">
+                <ul>
+                    <li class="navi active"><a href= "#!/about-us">ABOUT US</a></li>                     
+                    <li class="navi"><a href= "#!/about-you">ABOUT YOU</a></li>
+                    <li class="navi"><a href= "#!/insights">INSIGHTS</a></li>
+                    <li class="navi"><a href="#!/connect">CONNECT</a></li>    
+                </ul>
+            </div>
+            <!MOBILE MENU -->
+            <!-- <select class="visible-xs col-xs-12 mobile-menu">
+                <option>ABOUT US</option>
+                <option>ABOUT YOU</option>
+                <option>INSIGHTS</option>
+                <option>CONNECT</option>
+            </select>
         </div>
-        <!-- Desktop menu -->
-        <div class="menu col-md-6 col-xs-12 hidden-xs pull-right">
-            <ul>
-                <li class="navi"><a href= "#!/about-us">ABOUT US</a></li>                     
+        <div>
+            <ul class="header-ul">
+                <li><a href=""></a></li>
+                <li><a href=""></a></li>
+                <li><a href=""></a></li>
+                <li><a href=""></a></li>
+            </ul>
+        </div>
+    </div>
+</div> -->  
+
+   <!--  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </button>
+    <div class="navbar-brand logo" href="/#!">
+       <h4><a href= "/#!">GENESIS MICRO<br>SOLUTIONS, INC.</a></h4>
+    </div>
+
+
+    <div>
+        <span class="collapse navbar-collapse" style="height: auto;">
+            <ul class="nav navbar-nav pull-right">
+                <li class="navi active"><a href= "#!/about-us">ABOUT US</a></li>                     
                 <li class="navi"><a href= "#!/about-you">ABOUT YOU</a></li>
                 <li class="navi"><a href= "#!/insights">INSIGHTS</a></li>
                 <li class="navi"><a href="#!/connect">CONNECT</a></li>    
             </ul>
-        </div>
+        </span>  
+    </div>
 
-        <!-- MOBILE MENU -->
-        <!-- <select class="visible-xs col-xs-12 mobile-menu">
-            <option>ABOUT US</option>
-            <option>ABOUT YOU</option>
-            <option>INSIGHTS</option>
-            <option>CONNECT</option>
-        </select>
+</div> -->
+   <div class="navbar-header logo">
+        <button class="navbar-toggle" type="button" data-ng-click="toggleCollapsibleMenu()">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <h4><a href="/#!/" class="navbar-brand">GENESIS MICRO<br>SOLUTIONS, INC.</a></h4>
     </div>
-    <div>
-        <ul>
-            <li><a href=""></a></li>
-            <li><a href=""></a></li>
-            <li><a href=""></a></li>
-            <li><a href=""></a></li>
-        </ul> -->
-    </div>
+    <nav class="collapse navbar-collapse" collapse="!isCollapsed" role="navigation">
+        <ul class="nav navbar-nav" data-ng-if="menu.shouldRender(authentication.user);">
+            <li data-ng-repeat="item in menu.items | orderBy: 'position'" data-ng-if="item.shouldRender(authentication.user);" ng-switch="item.menuItemType" ui-route="{{item.uiRoute}}" class="{{item.menuItemClass}}" ng-class="{active: ($uiRoute)}" dropdown="item.menuItemType === 'dropdown'">
+                <a ng-switch-when="dropdown" class="dropdown-toggle">
+                    <span data-ng-bind="item.title"></span>
+                    <b class="caret"></b>
+                </a>
+                <ul ng-switch-when="dropdown" class="dropdown-menu">
+                    <li data-ng-repeat="subitem in item.items | orderBy: 'position'" data-ng-if="subitem.shouldRender(authentication.user);" ui-route="{{subitem.uiRoute}}" ng-class="{active: $uiRoute}">
+                        <a href="/#!/{{subitem.link}}" data-ng-bind="subitem.title"></a>
+                    </li>
+                </ul>
+                <a ng-switch-default href="/#!/{{item.link}}" data-ng-bind="item.title"></a>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right" data-ng-hide="authentication.user">
+            <li ui-route="/signup" ng-class="{active: $uiRoute}">
+                <a class="navi" href= "#!/about-you">ABOUT US</a>
+            </li>
+            <li class="divider-vertical"></li>
+            <li ui-route="/signin" ng-class="{active: $uiRoute}">
+                <a class="navi" href= "#!/about-us">ABOUT YOU</a>
+            </li>
+             <li ui-route="/signin" ng-class="{active: $uiRoute}">
+                <a class="navi" href= "#!/insights">INSIGHTS</a>
+            </li>
+             <li ui-route="/signin" ng-class="{active: $uiRoute}">
+                <a class="navi" href= "#!/connect">CONNECT</a>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right" data-ng-show="authentication.user">
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <span data-ng-bind="authentication.user.displayName"></span> <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="/#!/settings/profile">Edit Profile</a>
+                    </li>
+                    <li>
+                        <a href="/#!/settings/accounts">Manage Social Accounts</a>
+                    </li>
+                    <li data-ng-show="authentication.user.provider === 'local'">
+                        <a href="/#!/settings/password">Change Password</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="/auth/signout">Signout</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
 </div>
+
+

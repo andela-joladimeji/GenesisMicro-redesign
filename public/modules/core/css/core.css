@@ -1,11 +1,62 @@
 
-body {
+/*body {
     overflow: hidden;
-}
+}*/
 
 a.scroll {
-  color: blue;
+  color: #000;
   text-decoration: none;
+}
+
+.logo{
+  padding-left: 45px;
+}
+
+.header{
+  background-color: rgba(0, 0, 0, 0.5);
+  position: relative;
+  top:0;
+  left:0;
+  right:0;
+}
+
+.header-ul{
+  margin-bottom: -10px !important;
+}
+
+.header-container{
+  margin-top: 15px;
+}
+
+
+.header ul li a{
+  color: #fff;
+}
+
+/*.header ul li.active a:visited {
+color: #e30202;
+}
+*/
+.header li{
+  display: inline-block;
+  padding: 0 12px;
+}
+
+.logo a{
+  color: #fff;
+  letter-spacing: 3px;
+  font-size: 22px;
+}
+
+.menu{
+  margin-right: -20px;
+  margin-top: 22px;
+  font-size: 20px;
+}
+
+.container-fluid{
+  padding: 0;
+  margin: 0;
 }
 
 div.side-bar{
@@ -14,11 +65,14 @@ div.side-bar{
   top: 50%;
 }
 
+a.navi:hover{
+  background-color: transparent;
+}
+
 ul.scroll-balls {
   list-style: none;
   font-size: 1.2em;
   padding: 0;
-  color: red;
   display: block;
   text-align: right;
 }
@@ -66,10 +120,10 @@ a.scroll:after {
 }
 
 
-.content {
+/*.content {
 	margin-top: 50px;
 }
-
+*/
 .undecorated-link:hover {
 	text-decoration: none;
 }
@@ -78,97 +132,251 @@ a.scroll:after {
 	display: none !important;
 }
 
-.black{
-	background-color: #000;
-	height: 20px;
+.put, .period{
+  font-size: 1. 8em !important;
 }
 
-header h4{
-	color: #fff;
+.put, .insights-text{
+  background-color: rgba(255, 0, 0, 0.7);
+  width: 30%;
+  padding: 5px;
+  font-weight: bold; 
 }
 
-header ul li a{
-	color: #fff;
+.period{
+  background-color: rgba(255, 255, 255, 0.8);
+  width: 10%;
+  padding: 12px 2px;
 }
 
-header li{
-	display: inline-block;
-	padding: 0 12px;
+div.period.text-center{
+  bottom: 80px;
+  left: 40%;
 }
 
-.menu{
-	margin-top: 25px;
-	background-color: rgba(0,0,0,0.2);
+div.put.text-center{
+  bottom: 120px;
+  left: 35%;
 }
 
-.container-fluid{
-	padding: 0;
-	margin: 0;
+div.put.text-center, div.period.text-center, .insights-text{
+  position: absolute;
 }
 
-header{
-	margin-bottom: 100px;
-}
 .first-div-img{
 	padding-top: 400px !important;
-  background-color: #000;
-  background-image: url('/modules/core/img/Group-of-People2.gif') !important;
+  background-image: url('/modules/core/img/con2-edit.jpg') !important;
   background-size: cover !important;
   background-repeat: no-repeat !important;
   background-attachment: fixed !important;
+  height: 550px;
 }
 
 .first-div{
-	/*padding-top: 320px !important;*/
-  background-color: transparent;
-  background-image: -webkit-linear-gradient(#000, rgba(0, 0, 0, 0.5) 0) !important;
-  background-image: -o-linear-gradient(#000, rgba(0, 0, 0, 0.5) 56%);
-  background-image: linear-gradient(#000, rgba(0, 0, 0, 0.5) 56%);
   height: 100%;
+  position: relative;
+  width: 100%;
 }
 
 .third-div{
-/*	padding-top: 320px !important;*/
-  background-color: transparent;
-  background-image: -webkit-linear-gradient(#000, rgba(0, 0, 0, 0.5) 0) !important;
-  background-image: -o-linear-gradient(#000, rgba(0, 0, 0, 0.5) 56%);
-  background-image: linear-gradient(#000, rgba(0, 0, 0, 0.5) 56%);
   height: 100%;
 }
 
 .third-div-img{
 	padding-top: 400px !important;
-  background-color: #000;
-  background-image: url('/modules/core/img/consult.jpg') !important;
+  background: #000 url('/modules/core/img/con5-edit.jpg') no-repeat !important;
   background-size: cover !important;
   background-repeat: no-repeat !important;
   background-attachment: fixed !important;
+  height: 550px;
 }
 
 
 .fifth-div{
-/*	padding-top: 400px !important;*/
-  background-color: transparent;
-  background-image: -webkit-linear-gradient(#000, rgba(0, 0, 0, 0.5) 0) !important;
-  background-image: -o-linear-gradient(#000, rgba(0, 0, 0, 0.5) 56%);
-  background-image: linear-gradient(#000, rgba(0, 0, 0, 0.5) 56%);
   height: 100%;
 }
 
 .fifth-div-img{
 	padding-top: 400px !important;
   background-color: #000;
-  background-image: url('/modules/core/img/Contact-Slashsquare.jpg') !important;
+  background-image: url('/modules/core/img/con6-edit.jpg') !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
+  height: 550px;
+}
+
+
+
+.seventh-div{
+  height: 100%;
+}
+
+.seventh-div-img{
+  padding-top: 400px !important;
+  background-color: #000;
+  background-image: url('/modules/core/img/staff-edit.jpg') !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
+  height: 550px;
+}
+
+.our-job{
+  padding-top: 30px;
+}
+
+
+/*.picture-box{
+  height: 287px;
+  width: 287px;
+}*/
+
+.team img{
+  width: 40%;
+  height: 40%;
+}
+
+
+.picture-box{
+  width: 40%;
+  border: 1px solid #000;
+  /*margin: 10px 15px 15px 0;*/
+  padding: 5px;
+}
+
+.about-us-div-img{
+  padding-top: 400px !important;
+  background: #000 url('/modules/core/img/conteam1.jpg') no-repeat !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
+  height: 550px;
+}
+
+.about-us-div{
+  height: 100%;
+}
+
+.about-you-div-img{
+  padding-top: 400px !important;
+  background: #000 url('/modules/core/img/con4.jpg') no-repeat !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
+  height: 550px;
+}
+
+.about-you-div{
+  height: 100%; 
+}
+
+.connect-div-img{
+  padding-top: 400px !important;
+  background: #000 url('/modules/core/img/Contact.jpg') no-repeat !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
+  height: 550px;
+}
+
+.connect-div{
+  height: 100%;
+}
+
+
+.insights-div-img{
+  padding-top: 400px !important;
+  background: #000 url('/modules/core/img/view-tower.jpg') no-repeat !important;
   background-size: cover !important;
   background-repeat: no-repeat !important;
   background-attachment: fixed !important;
 }
 
+.insights-div{
+  height: 100%;
+}
+
+.top-footer{
+  overflow: hidden;
+  margin: 85px 0 20px 90px;
+}
+
+.social-icon-list{
+  list-style-type: none;
+}
+
+.social-icon-twitter, .social-icon-linkedin, .icon-envelope{
+  width: 30px;
+  height: 30px;
+  border-radius: 20px;
+  font-size: 30px;
+  margin-right: 12px;
+  padding-top: 15%;
+  padding-left: 20%
+}
+
+.social-icon-twitter, .social-icon-linkedin{
+  background: #fff;
+  color: #000;
+}
+
+.icon-envelope{
+  background: #fff;
+  color: #000; 
+}
+
 footer{
-  height: 300px;
+  background-color: #000;
+  padding-bottom: 60px;
+}
+
+.footer, .footer-link a{
+  color: #fff;
+  text-decoration: underline;
+}
+
+.insights-icon li{
+  list-style: none;
+}
+
+.insights-icon-li{
+  display: inline-block;
+  margin-left: 10px;
+  color: #939393;
+}
+
+.icon-comment, .icon-like, .icon-share{
+  color: #939393;
+  padding-right: 10px;
 }
 
 
+.group:after, .group:before{
+  content: ".";
+  display: table;
+}
+
+.group:after {
+  clear: both;
+}
+
+hr.group{
+
+  border-top: 1px solid #eee;
+  width: 960px;
+}
 
 
+.blog{
+  max-width: 960px;
+  margin: 100px auto;
+}
 
+.insights-text{
+  width: 30%;
+  padding: 5px 10px;
+  font-size: 20px;
+  bottom: 80px;
+  left: 40%;
+}
