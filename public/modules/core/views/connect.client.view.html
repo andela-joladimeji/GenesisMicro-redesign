@@ -1,17 +1,58 @@
 <section data-ng-controller="HomeController">
 	 <div class="connect-div-img">
-        <div class="connect-div">
-            <div class="put text-center">CONNECT</div>
-            <div class="period text-center">We're all about communication.</div>
+        <div class="connect-div pos-absolute">
+            <div class="connect text-center">CONNECT</div>
+            <div class="connect-text text-center"><p>We're all about communication.<p></div>
         </div>
     </div>
-    <div class="container">
+    <div class="container connect-body">
     	<div class="row">
     		<div class="col-md-12">
 	    		<h3>SOMETIMES YOU JUST HAVE A QUESTION.</h3>
-				<p>Doesn’t mean you want to have a whole conversation about it. We get that. Shoot us a line. We’ll respond quickly. Promise.</p>
+			<p>Doesn’t mean you want to have a whole conversation about it. We get that. Shoot us a line. We’ll respond quickly. Promise.</p>
 			</div>
-			
+        </div>
+        <div class="row">
+            <form data-ng-submit="senddata()" class="form-horizontal" autocomplete="off">
+                <div class="connect-form">
+                    <div class="input-group col-md-12">
+                        <div class="col-md-5">
+                            <label for="name">Name<span class="req">*</span></label>
+                            <input type="text" id="first_name" name="first_name" class="form-control" data-ng-model="first_name">
+                        </div>
+                        <div class="col-md-5 last_name">
+                            <input type="text" id="last_name" name="last_name" class="form-control" data-ng-model="last_name">
+                        </div>
+                    </div>
+                    <div class="input-group email col-md-12">
+                        <div class="col-md-10">
+                            <label for="email">Email Address<span class="req">*</span></label>
+                            <input type="email" name="email" class="form-control" data-ng-model="email"/>
+                        </div>
+                    </div>
+                    <div class="input-group col-md-12">
+                        <div class="col-md-10">
+                            <label for="subject">Subject<span class="req">*</span></label>
+                            <input type="text" name="subject" class="form-control" data-ng-model="subject"/>
+                        </div>
+                    </div>
+                    <div class="input-group col-md-12">
+                        <div class="message col-md-10">
+                            <label for="comments">Message<span class="req">*</span></label>
+                            <textarea cols="46" rows="3" name="comments" class="form-control" data-ng-model="message"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="submitButton">Submit</button>
+                    </div>
+                    <div data-ng-show="error" class="text-center text-danger">
+                        <strong data-ng-bind="error"></strong>
+                    </div>
+                    <hr class="connect-divider col-md-10">
+                    <p>WANT TO SEND YOUR RESUME? ATTACH IT IN AN EMAIL.</p>
+                    <div class="connect-icon pull-left"><div class="connect-mail-anchor" href="/#!"><i class="fa fa-envelope connect-envelope"></i></div></div>
+                </div>
+            </form>
     	</div>
     </div>
 </section>

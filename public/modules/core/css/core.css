@@ -1,42 +1,69 @@
+.home p{
+    font-size: 18px;
+}
 
-/*body {
-    overflow: hidden;
-}*/
+body {
+    overflow-x: hidden;
+    color: #363636;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
+    line-height: 1.6em;
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Proxima';
+    src: url('/modules/core/fonts/ProximaFontFiles/proxima/proximanova-webfont.eot');
+    src: url('/modules/core/fonts/ProximaFontFiles/proxima/proximanova-webfont.eot?#iefix') format('embedded-opentype'),
+    url('/modules/core/fonts/ProximaFontFiles/proxima/proximanova-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 
 a.scroll {
-  color: #000;
-  text-decoration: none;
+   color: #000;
+   text-decoration: none;
 }
 
 .logo{
-  padding-left: 45px;
+   padding-left: 45px;
 }
 
 .header{
-  background-color: rgba(0, 0, 0, 0.5);
-  position: relative;
-  top:0;
-  left:0;
-  right:0;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: relative;
+    top:0;
+    left:0;
+    right:0;
+}
+.nav-padding{
+    padding-bottom: 25px;
+    padding-top: 30px;
+}
+.nav > li > a:hover, .nav > li > a:focus {
+    background: #ccc !important;
 }
 
+
 .header-ul{
-  margin-bottom: -10px !important;
+   margin-bottom: -10px !important;
 }
 
 .header-container{
-  margin-top: 15px;
+   margin-top: 15px;
 }
 
 
 .header ul li a{
-  color: #fff;
+   color: #fff;
 }
 
-/*.header ul li.active a:visited {
-color: #e30202;
+a.navi a:visited, a.navi:active {
+    color: #e30202;
 }
-*/
+
 .header li{
   display: inline-block;
   padding: 0 12px;
@@ -132,44 +159,93 @@ a.scroll:after {
 	display: none !important;
 }
 
-.put, .period{
-  font-size: 1. 8em !important;
+
+
+.put, .insights-text, .candidates, .clients, .connect, .meet-team{
+    background-color: rgba(255, 0, 0, 0.6);
 }
 
 .put, .insights-text{
-  background-color: rgba(255, 0, 0, 0.7);
-  width: 30%;
-  padding: 5px;
-  font-weight: bold; 
+    width: 50%;
+    padding: 5px;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.period, .work, .deliver, .connect-text, .our-team{
+    background-color: rgba(255, 255, 255, 0.9);
 }
 
 .period{
-  background-color: rgba(255, 255, 255, 0.8);
-  width: 10%;
-  padding: 12px 2px;
+    width: 10%;
+    padding: 15px 1px;
+    /*font-family: "proxima-nova";*/
+    font-size: 1.6em;
+    line-height: 1.6em;
+    letter-spacing: 1px;
+  /*  font-weight: 400;*/
 }
 
+.candidates-div{
+    top: 1500px;
+    left: 35%;
+    width: 100%;
+}
+
+.candidates{
+    width: 31%;
+    padding: 4px;
+    margin-bottom: 20px;
+}
+
+.candidates-div p{
+    line-height: 1.6em;
+}
+
+.candidates p{
+    font-weight: 700;
+    font-size: 2em;
+    letter-spacing: 7px;
+}
+
+.work p{
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.6em;
+    letter-spacing: 1px;
+
+}
+
+.work{
+    bottom: 130px;
+    left: 50%;
+    width: 20%;
+    padding: 7px 1px;
+    margin-left: 64px;
+}
+
+
 div.period.text-center{
-  bottom: 80px;
-  left: 40%;
+  bottom: 130px;
+  left: 45%;
 }
 
 div.put.text-center{
-  bottom: 120px;
-  left: 35%;
+  bottom: 215px;
+  left: 25%;
 }
 
-div.put.text-center, div.period.text-center, .insights-text{
+.pos-absolute {
   position: absolute;
 }
 
 .first-div-img{
 	padding-top: 400px !important;
-  background-image: url('/modules/core/img/con2-edit.jpg') !important;
-  background-size: cover !important;
-  background-repeat: no-repeat !important;
-  background-attachment: fixed !important;
-  height: 550px;
+    background-image: url('/modules/core/img/con2-edit.jpg') !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    background-attachment: fixed !important;
+    height: 590px;
 }
 
 .first-div{
@@ -178,17 +254,37 @@ div.put.text-center, div.period.text-center, .insights-text{
   width: 100%;
 }
 
+.second-div{
+    max-width: 960px;
+   margin: 0 auto;
+   padding-top: 40px;
+}
+
+.second-div img{
+    width: 50%;
+    margin-top: 30px;
+    margin-bottom: 100px;
+}
+
+.wrapper{
+    padding: 20px 0;
+}
+
+.divider{
+    padding: 20px;
+}
+
 .third-div{
   height: 100%;
 }
 
 .third-div-img{
 	padding-top: 400px !important;
-  background: #000 url('/modules/core/img/con5-edit.jpg') no-repeat !important;
-  background-size: cover !important;
-  background-repeat: no-repeat !important;
-  background-attachment: fixed !important;
-  height: 550px;
+    background: #000 url('/modules/core/img/con5-edit.jpg') no-repeat !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    background-attachment: fixed !important;
+    height: 550px;
 }
 
 
@@ -206,7 +302,40 @@ div.put.text-center, div.period.text-center, .insights-text{
   height: 550px;
 }
 
+.clients-div{
+    top: 2400px;
+    left: 26%;
+    width: 100%;
+}
 
+.clients-div p{
+    line-height: 1.6em;
+}
+
+.clients p{
+    font-weight: 700;
+    font-size: 2.1em;
+}
+
+.clients{
+    width: 25%;
+    margin-bottom: 20px;
+    margin-left: 161px;
+    letter-spacing: 7px;
+}
+
+.deliver{
+    letter-spacing: 1px;
+    width: 47%;
+    padding: 7px 0;
+}
+
+.deliver p{
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.6em;
+    letter-spacing: 1px;
+}
 
 .seventh-div{
   height: 100%;
@@ -222,36 +351,94 @@ div.put.text-center, div.period.text-center, .insights-text{
   height: 550px;
 }
 
+.meet-team-div{
+    top: 3170px;
+    left: 24%;
+    width: 100%;
+}
+
+.meet-team-div p{
+    line-height: 1.6em;
+}
+
+.meet-team p{
+    font-weight: 700;
+    font-size: 2.1em;
+}
+
+.meet-team{
+    width: 52%;
+    margin-bottom: 20px;
+    letter-spacing: 7px;
+}
+
+.our-team{
+    letter-spacing: 1px;
+    width: 43%;
+    padding: 7px 0;
+    margin-left: 30px;
+}
+
+.our-team p{
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.6em;
+    letter-spacing: 1px;
+}
+
 .our-job{
   padding-top: 30px;
 }
 
-
-/*.picture-box{
-  height: 287px;
-  width: 287px;
-}*/
+.team{
+  max-width: 940px;
+  margin: 0 auto;
+  padding: 0 5%;
+}
 
 .team img{
-  width: 40%;
-  height: 40%;
-}
-
-
-.picture-box{
-  width: 40%;
+  width: 80%;
+  height: 80%;
   border: 1px solid #000;
-  /*margin: 10px 15px 15px 0;*/
-  padding: 5px;
 }
+
+.gallery{
+    margin: 0;
+    padding: 0;
+}
+
+.gallery li{
+    float: left;
+    width: 45%;
+    height: 45%;
+    list-style: none;
+}
+
+.scrollup, .scrolldown{
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    position: absolute;
+    left: 49%;  
+}
+
+.scrolldown{
+    bottom: 0;
+}
+
+.scrollup{
+    top: 3920px;
+    background-color: #fff;
+}
+
 
 .about-us-div-img{
-  padding-top: 400px !important;
-  background: #000 url('/modules/core/img/conteam1.jpg') no-repeat !important;
-  background-size: cover !important;
-  background-repeat: no-repeat !important;
-  background-attachment: fixed !important;
-  height: 550px;
+    padding-top: 400px !important;
+    background: #000 url('/modules/core/img/conteam1.jpg') no-repeat !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    background-attachment: fixed !important;
+    height: 550px;
 }
 
 .about-us-div{
@@ -259,29 +446,32 @@ div.put.text-center, div.period.text-center, .insights-text{
 }
 
 .about-you-div-img{
-  padding-top: 400px !important;
-  background: #000 url('/modules/core/img/con4.jpg') no-repeat !important;
-  background-size: cover !important;
-  background-repeat: no-repeat !important;
-  background-attachment: fixed !important;
-  height: 550px;
+    padding-top: 400px !important;
+    background: #000 url('/modules/core/img/con4.jpg') no-repeat !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    background-attachment: fixed !important;
+    height: 550px;
 }
 
 .about-you-div{
-  height: 100%; 
+    height: 100%; 
 }
 
 .connect-div-img{
-  padding-top: 400px !important;
-  background: #000 url('/modules/core/img/Contact.jpg') no-repeat !important;
-  background-size: cover !important;
-  background-repeat: no-repeat !important;
-  background-attachment: fixed !important;
-  height: 550px;
+    padding-top: 400px !important;
+    background: #000 url('/modules/core/img/Contact.jpg') no-repeat !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    background-attachment: fixed !important;
+    height: 550px;
 }
 
 .connect-div{
-  height: 100%;
+    height: 60%;
+    top: 250px;
+    left: 30%;
+    width: 100%;
 }
 
 
@@ -316,15 +506,11 @@ div.put.text-center, div.period.text-center, .insights-text{
   padding-left: 20%
 }
 
-.social-icon-twitter, .social-icon-linkedin{
+.social-icon-twitter, .social-icon-linkedin, .icon-envelope{
   background: #fff;
   color: #000;
 }
 
-.icon-envelope{
-  background: #fff;
-  color: #000; 
-}
 
 footer{
   background-color: #000;
@@ -353,7 +539,6 @@ footer{
 
 
 .group:after, .group:before{
-  content: ".";
   display: table;
 }
 
@@ -380,3 +565,85 @@ hr.group{
   bottom: 80px;
   left: 40%;
 }
+
+.connect{
+    width: 20%;
+    font-weight: 800;
+    line-height: 2.6em;
+    letter-spacing: 4px;
+    margin-bottom: 20px;
+    font-size: 1.7em;
+    margin-left: 136px;
+
+}
+
+.connect-text{
+    width: 40%;
+    padding: 15px 1px;
+    font-weight: 400;
+    font-size: 1.6em;
+    font-style: italic;
+    line-height: 1.6em;
+    letter-spacing: 1px;
+}  
+
+.connect-body{
+    max-width: 960px;
+    margin: 100px auto;
+}
+
+.connect-form label{
+    font-weight: 400;
+    font-size: 0.9em;
+    font-style: normal; 
+}
+
+.last_name{
+    margin-top: 31px;
+}
+
+.submitButton{
+    padding: 10px;
+    width: 8%;
+    height: 35px;
+    background-color: #000;
+    color: #FFF;
+    text-decoration:none;
+    margin-right: 870px;
+    border: 1px solid #000;
+    font-size: 0.7em;
+}
+
+.email{
+  margin: 30px 0;
+}
+
+.message{
+    margin: 30px 0 25px 0;
+}
+
+.connect-form hr{
+   margin-right: 20px;
+}
+
+.connect-icon{
+    width: 30px;
+  height: 30px;
+  border-radius: 20px;
+  font-size: 30px;
+  margin-right: 12px;
+  padding-top: 15%;
+  padding-left: 20%
+}
+
+.connect-envelope{
+    background: #000;
+    color: #fff;
+}
+
+.connect-mail-anchor{
+    margin-left: 50px;
+}
+
+
+

@@ -25,7 +25,7 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
 			templateUrl: 'modules/core/views/insights.client.view.html'
 		})
 		.state('connect', {
-			url: '/connect',
+			url: '/contact',
 			templateUrl: 'modules/core/views/connect.client.view.html'
 		});
 
