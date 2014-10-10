@@ -1,0 +1,56 @@
+.about-us-div-img{
+    padding-top: 400px !important;
+    background: #000 url('/modules/core/img/conteam1.jpg') no-repeat !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    background-attachment: fixed !important;
+    height: 550px;
+}
+
+.about-us-div{
+    position: absolute;
+    width: 100%;
+    top: 300px;
+}
+
+.about-us-text p{
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.6em;
+    letter-spacing: 1px;
+}
+
+.about-us-text{
+    margin: 30px auto;
+    width: 60%;
+    padding: 11px 10px;
+}
+
+.about p{
+    font-weight: 700;
+    font-size: 2em;
+    letter-spacing: 7px;
+}
+
+.about{
+    margin: 30px auto;
+    width: 25%;
+    padding: 11px 0;
+}
+
+.about-container{
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 60px 0;
+}
+
+.about-container img{
+    width: 200px;
+    height: 200px;
+    margin: 5px;
+    border: 3px solid #000;
+}
+
+.details{
+    padding-top: 20px;
+}

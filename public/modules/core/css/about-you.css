@@ -1,0 +1,12 @@
+.about-you-div-img{
+    padding-top: 400px !important;
+    background: #000 url('/modules/core/img/con4.jpg') no-repeat !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    background-attachment: fixed !important;
+    height: 550px;
+}
+
+.about-you-div{
+    height: 100%; 
+}

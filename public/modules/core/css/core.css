@@ -1,5 +1,5 @@
 .home p{
-    font-size: 18px;
+    font-size: 14px;
 }
 
 body {
@@ -12,6 +12,14 @@ body {
     font-style: normal;
 }
 
+.group:after, .group:before{
+  display: table;
+}
+
+.group:after {
+  clear: both;
+}
+-
 @font-face {
     font-family: 'Proxima';
     src: url('/modules/core/fonts/ProximaFontFiles/proxima/proximanova-webfont.eot');
@@ -21,11 +29,14 @@ body {
     font-style: normal;
 }
 
-
-a.scroll {
-   color: #000;
-   text-decoration: none;
+/*The navigation bar*/
+/*header
+background-color: rgba(0,0,0,.6);
+width: 100%;
+position: relative;
+z-index: 8001;
 }
+*/
 
 .logo{
    padding-left: 45px;
@@ -86,22 +97,50 @@ a.navi a:visited, a.navi:active {
   margin: 0;
 }
 
-div.side-bar{
-  position: fixed;
-  right: 0;
-  top: 50%;
-}
 
 a.navi:hover{
   background-color: transparent;
 }
 
+
+
+/*.content {
+  margin-top: 50px;
+}
+*/
+.undecorated-link:hover {
+  text-decoration: none;
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+
+
+
+.pos-absolute {
+   position: absolute;
+} 
+
+/*The Home page*/
+/*The side navigation bars*/
 ul.scroll-balls {
   list-style: none;
   font-size: 1.2em;
   padding: 0;
   display: block;
   text-align: right;
+}
+
+div.side-bar{
+  position: fixed;
+  right: 0;
+  top: 50%;
+}
+
+a.scroll {
+   color: #000;
+   text-decoration: none;
 }
 
 li.side-nav{
@@ -111,6 +150,11 @@ li.side-nav{
 li.side-nav a.scroll {
   display: block;
 }
+
+span.scroll-span{
+    font-size: 10px;
+}
+
 
 li.side-nav a.scroll span.scroll-span {
   display: inline-block;
@@ -147,21 +191,37 @@ a.scroll:after {
 }
 
 
-/*.content {
-	margin-top: 50px;
+/*The first div on the home page*/
+
+.first-div-img{
+    padding-top: 400px !important;
+    background-image: url('/modules/core/img/con2-edit.jpg') !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    background-attachment: fixed !important;
+    height: 590px;
 }
-*/
-.undecorated-link:hover {
-	text-decoration: none;
+
+.first-div{
+   height: 100%;
+   position: relative;
+   width: 100%;
 }
 
-[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
-	display: none !important;
+.scrollup, .scrolldown{
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    position: absolute;
+    left: 49%;  
+}
+
+.scrolldown{
+    bottom: 0;
 }
 
 
-
-.put, .insights-text, .candidates, .clients, .connect, .meet-team{
+.put, .insights-text, .candidates, .clients, .connect, .meet-team, .about{
     background-color: rgba(255, 0, 0, 0.6);
 }
 
@@ -172,7 +232,7 @@ a.scroll:after {
     font-size: 30px;
 }
 
-.period, .work, .deliver, .connect-text, .our-team{
+.period, .work, .deliver, .connect-text, .our-team, .about-us-text{
     background-color: rgba(255, 255, 255, 0.9);
 }
 
@@ -184,6 +244,85 @@ a.scroll:after {
     line-height: 1.6em;
     letter-spacing: 1px;
   /*  font-weight: 400;*/
+}
+
+div.period.text-center{
+   bottom: 130px;
+   left: 45%;
+}
+
+div.put.text-center{
+   bottom: 215px;
+   left: 25%;
+}
+
+/*The second div on the home page*/
+
+
+.second-div{
+    max-width: 960px;
+   margin: 0 auto;
+   padding-top: 40px;
+}
+
+.second-div img{
+    width: 50%;
+    margin-top: 30px;
+    margin-bottom: 100px;
+}
+
+
+
+.work p{
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.6em;
+    letter-spacing: 1px;
+
+}
+
+.work{
+    bottom: 130px;
+    left: 50%;
+    width: 20%;
+    padding: 7px 1px;
+    margin-left: 64px;
+}
+
+
+.wrapper{
+    padding: 20px 0;
+}
+
+hr.divider{
+    border-top: 2px soild #000 !important;
+}
+
+
+/*Third div on the home page*/
+
+.third-div{
+  height: 100%;
+}
+
+.third-div-img{
+    padding-top: 400px !important;
+    background: #000 url('/modules/core/img/con5-edit.jpg') no-repeat !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    background-attachment: fixed !important;
+    height: 550px;
+}
+
+.candidates-wrapper{
+    max-width: 850px;
+    margin: 99px auto;
+}
+
+
+.candidates-wrapper h4, .clients-wrapper h4, .team-gallery h4{
+    padding-bottom: 18px;
+    font-size: 20px;
 }
 
 .candidates-div{
@@ -208,98 +347,19 @@ a.scroll:after {
     letter-spacing: 7px;
 }
 
-.work p{
-    font-style: italic;
-    font-weight: 400;
-    font-size: 1.6em;
-    letter-spacing: 1px;
-
-}
-
-.work{
-    bottom: 130px;
-    left: 50%;
-    width: 20%;
-    padding: 7px 1px;
-    margin-left: 64px;
-}
-
-
-div.period.text-center{
-  bottom: 130px;
-  left: 45%;
-}
-
-div.put.text-center{
-  bottom: 215px;
-  left: 25%;
-}
-
-.pos-absolute {
-  position: absolute;
-}
-
-.first-div-img{
-	padding-top: 400px !important;
-    background-image: url('/modules/core/img/con2-edit.jpg') !important;
-    background-size: cover !important;
-    background-repeat: no-repeat !important;
-    background-attachment: fixed !important;
-    height: 590px;
-}
-
-.first-div{
-  height: 100%;
-  position: relative;
-  width: 100%;
-}
-
-.second-div{
-    max-width: 960px;
-   margin: 0 auto;
-   padding-top: 40px;
-}
-
-.second-div img{
-    width: 50%;
-    margin-top: 30px;
-    margin-bottom: 100px;
-}
-
-.wrapper{
-    padding: 20px 0;
-}
-
-.divider{
-    padding: 20px;
-}
-
-.third-div{
-  height: 100%;
-}
-
-.third-div-img{
-	padding-top: 400px !important;
-    background: #000 url('/modules/core/img/con5-edit.jpg') no-repeat !important;
-    background-size: cover !important;
-    background-repeat: no-repeat !important;
-    background-attachment: fixed !important;
-    height: 550px;
-}
-
-
+/*The fifth div*/
 .fifth-div{
   height: 100%;
 }
 
 .fifth-div-img{
-	padding-top: 400px !important;
-  background-color: #000;
-  background-image: url('/modules/core/img/con6-edit.jpg') !important;
-  background-size: cover !important;
-  background-repeat: no-repeat !important;
-  background-attachment: fixed !important;
-  height: 550px;
+    padding-top: 400px !important;
+    background-color: #000;
+    background-image: url('/modules/core/img/con6-edit.jpg') !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    background-attachment: fixed !important;
+    height: 550px;
 }
 
 .clients-div{
@@ -337,22 +397,47 @@ div.put.text-center{
     letter-spacing: 1px;
 }
 
+.clients-wrapper{
+    max-width: 850px;
+    margin: 99px auto;
+}
+
+
+.clients{
+    width: 31%;
+    padding: 4px;
+    margin-bottom: 20px;
+}
+
+
+.clients p{
+    font-weight: 700;
+    font-size: 2em;
+    letter-spacing: 7px;
+}
+
+/*Seventh div*/
+
 .seventh-div{
   height: 100%;
 }
 
 .seventh-div-img{
-  padding-top: 400px !important;
-  background-color: #000;
-  background-image: url('/modules/core/img/staff-edit.jpg') !important;
-  background-size: cover !important;
-  background-repeat: no-repeat !important;
-  background-attachment: fixed !important;
-  height: 550px;
+    padding-top: 400px !important;
+    background-color: #000;
+    background-image: url('/modules/core/img/staff-edit.jpg') !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    background-attachment: fixed !important;
+    height: 550px;
+}
+
+.team-gallery{
+    padding-top: 80px;
 }
 
 .meet-team-div{
-    top: 3170px;
+    top: 3500px;
     left: 24%;
     width: 100%;
 }
@@ -386,20 +471,17 @@ div.put.text-center{
     letter-spacing: 1px;
 }
 
-.our-job{
-  padding-top: 30px;
-}
 
 .team{
-  max-width: 940px;
-  margin: 0 auto;
-  padding: 0 5%;
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 5%;
 }
 
 .team img{
-  width: 80%;
-  height: 80%;
-  border: 1px solid #000;
+    width: 240px;
+    height: 240px;
+    border: 1px solid #000;
 }
 
 .gallery{
@@ -408,22 +490,9 @@ div.put.text-center{
 }
 
 .gallery li{
-    float: left;
-    width: 45%;
-    height: 45%;
+    display: inline-block;
     list-style: none;
-}
-
-.scrollup, .scrolldown{
-    width: 40px;
-    height: 40px;
-    border-radius: 20px;
-    position: absolute;
-    left: 49%;  
-}
-
-.scrolldown{
-    bottom: 0;
+    margin: 20px;
 }
 
 .scrollup{
@@ -432,61 +501,7 @@ div.put.text-center{
 }
 
 
-.about-us-div-img{
-    padding-top: 400px !important;
-    background: #000 url('/modules/core/img/conteam1.jpg') no-repeat !important;
-    background-size: cover !important;
-    background-repeat: no-repeat !important;
-    background-attachment: fixed !important;
-    height: 550px;
-}
-
-.about-us-div{
-  height: 100%;
-}
-
-.about-you-div-img{
-    padding-top: 400px !important;
-    background: #000 url('/modules/core/img/con4.jpg') no-repeat !important;
-    background-size: cover !important;
-    background-repeat: no-repeat !important;
-    background-attachment: fixed !important;
-    height: 550px;
-}
-
-.about-you-div{
-    height: 100%; 
-}
-
-.connect-div-img{
-    padding-top: 400px !important;
-    background: #000 url('/modules/core/img/Contact.jpg') no-repeat !important;
-    background-size: cover !important;
-    background-repeat: no-repeat !important;
-    background-attachment: fixed !important;
-    height: 550px;
-}
-
-.connect-div{
-    height: 60%;
-    top: 250px;
-    left: 30%;
-    width: 100%;
-}
-
-
-.insights-div-img{
-  padding-top: 400px !important;
-  background: #000 url('/modules/core/img/view-tower.jpg') no-repeat !important;
-  background-size: cover !important;
-  background-repeat: no-repeat !important;
-  background-attachment: fixed !important;
-}
-
-.insights-div{
-  height: 100%;
-}
-
+/*The footer*/
 .top-footer{
   overflow: hidden;
   margin: 85px 0 20px 90px;
@@ -496,19 +511,16 @@ div.put.text-center{
   list-style-type: none;
 }
 
-.social-icon-twitter, .social-icon-linkedin, .icon-envelope{
-  width: 30px;
-  height: 30px;
-  border-radius: 20px;
-  font-size: 30px;
-  margin-right: 12px;
-  padding-top: 15%;
-  padding-left: 20%
-}
-
-.social-icon-twitter, .social-icon-linkedin, .icon-envelope{
-  background: #fff;
-  color: #000;
+.social-icon-twitter, .social-icon-linkedin, .icon-envelope, .connect-envelope{
+    width: 30px;
+    height: 30px;
+    border-radius: 20px;
+    font-size: 30px;
+    margin-right: 12px;
+    padding-top: 15%;
+    padding-left: 20%;
+    background: #fff;
+    color: #000;
 }
 
 
@@ -522,128 +534,6 @@ footer{
   text-decoration: underline;
 }
 
-.insights-icon li{
-  list-style: none;
-}
-
-.insights-icon-li{
-  display: inline-block;
-  margin-left: 10px;
-  color: #939393;
-}
-
-.icon-comment, .icon-like, .icon-share{
-  color: #939393;
-  padding-right: 10px;
-}
-
-
-.group:after, .group:before{
-  display: table;
-}
-
-.group:after {
-  clear: both;
-}
-
-hr.group{
-
-  border-top: 1px solid #eee;
-  width: 960px;
-}
-
-
-.blog{
-  max-width: 960px;
-  margin: 100px auto;
-}
-
-.insights-text{
-  width: 30%;
-  padding: 5px 10px;
-  font-size: 20px;
-  bottom: 80px;
-  left: 40%;
-}
-
-.connect{
-    width: 20%;
-    font-weight: 800;
-    line-height: 2.6em;
-    letter-spacing: 4px;
-    margin-bottom: 20px;
-    font-size: 1.7em;
-    margin-left: 136px;
-
-}
-
-.connect-text{
-    width: 40%;
-    padding: 15px 1px;
-    font-weight: 400;
-    font-size: 1.6em;
-    font-style: italic;
-    line-height: 1.6em;
-    letter-spacing: 1px;
-}  
-
-.connect-body{
-    max-width: 960px;
-    margin: 100px auto;
-}
-
-.connect-form label{
-    font-weight: 400;
-    font-size: 0.9em;
-    font-style: normal; 
-}
-
-.last_name{
-    margin-top: 31px;
-}
-
-.submitButton{
-    padding: 10px;
-    width: 8%;
-    height: 35px;
-    background-color: #000;
-    color: #FFF;
-    text-decoration:none;
-    margin-right: 870px;
-    border: 1px solid #000;
-    font-size: 0.7em;
-}
-
-.email{
-  margin: 30px 0;
-}
-
-.message{
-    margin: 30px 0 25px 0;
-}
-
-.connect-form hr{
-   margin-right: 20px;
-}
-
-.connect-icon{
-    width: 30px;
-  height: 30px;
-  border-radius: 20px;
-  font-size: 30px;
-  margin-right: 12px;
-  padding-top: 15%;
-  padding-left: 20%
-}
-
-.connect-envelope{
-    background: #000;
-    color: #fff;
-}
-
-.connect-mail-anchor{
-    margin-left: 50px;
-}
 
 
 

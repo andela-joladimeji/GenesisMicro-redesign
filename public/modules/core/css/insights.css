@@ -1,0 +1,51 @@
+
+.insights-div-img{
+  padding-top: 400px !important;
+  background: #000 url('/modules/core/img/view-tower.jpg') no-repeat !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
+}
+
+.insights-div{
+  height: 100%;
+}
+
+.blog{
+  max-width: 960px;
+  margin: 100px auto;
+}
+
+.insights-text{
+    width: 25%;
+    padding: 8px 0;
+    font-size: 20px;
+    bottom: 190px;
+    left: 500px;
+    position: relative:;
+    position: relative;
+}
+
+
+
+hr.group{
+
+  border-top: 1px solid #eee;
+  width: 960px;
+}
+
+
+.insights-icon li{
+  list-style: none;
+}
+
+.insights-icon-li{
+  display: inline-block;
+  margin-left: 10px;
+  color: #939393;
+}
+
+.icon-comment, .icon-like, .icon-share{
+  color: #939393;
+  padding-right: 10px;
+}

@@ -1,5 +1,5 @@
 <section data-ng-controller="HomeController">
-	 <div class="connect-div-img">
+	 <div class="connect-div-img img-responsive">
         <div class="connect-div pos-absolute">
             <div class="connect text-center">CONNECT</div>
             <div class="connect-text text-center"><p>We're all about communication.<p></div>
@@ -13,7 +13,7 @@
 			</div>
         </div>
         <div class="row">
-            <form data-ng-submit="senddata()" class="form-horizontal" autocomplete="off">
+            <form data-ng-submit="senddata()" class="contact-form" autocomplete="off">
                 <div class="connect-form">
                     <div class="input-group col-md-12">
                         <div class="col-md-5">
@@ -49,7 +49,7 @@
                         <strong data-ng-bind="error"></strong>
                     </div>
                     <hr class="connect-divider col-md-10">
-                    <p>WANT TO SEND YOUR RESUME? ATTACH IT IN AN EMAIL.</p>
+                    <!-- <p class="text-center">WANT TO SEND YOUR RESUME? ATTACH IT IN AN EMAIL.</p> -->
                     <div class="connect-icon pull-left"><div class="connect-mail-anchor" href="/#!"><i class="fa fa-envelope connect-envelope"></i></div></div>
                 </div>
             </form>
