@@ -34,6 +34,9 @@ hr.group{
   width: 960px;
 }
 
+.insights-icon{
+    font-size: 10px;
+}
 
 .insights-icon li{
   list-style: none;
@@ -42,7 +45,10 @@ hr.group{
 .insights-icon-li{
   display: inline-block;
   margin-left: 10px;
-  color: #939393;
+}
+
+.insights-view-icon, .insights-icon-li{
+   color: #939393;
 }
 
 .icon-comment, .icon-like, .icon-share{

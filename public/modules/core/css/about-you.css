@@ -8,5 +8,33 @@
 }
 
 .about-you-div{
-    height: 100%; 
+    position: absolute;
+    width: 100%;
+    top: 300px;
+}
+
+.about-first-div{
+    margin: 30px auto;
+    width: 25%;
+    padding: 11px 0;
+}
+
+
+.about-second-div p{
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.6em;
+    letter-spacing: 1px;
+}
+
+.about-second-div{
+    margin: 30px auto;
+    width: 80%;
+    padding: 11px 10px;
+}
+
+.about-first-div p{
+    font-weight: 700;
+    font-size: 2em;
+    letter-spacing: 7px;
 }

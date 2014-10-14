@@ -66,22 +66,25 @@ var UserSchema = new Schema({
 		type: String,
 		required: 'Provider is required'
 	},
+	role: {
+		type: String
+	},
 	providerData: {},
 	additionalProvidersData: {},
-	roles: {
-		type: [{
-			type: String,
-			enum: ['user', 'admin']
-		}],
-		default: ['user']
-	},
 	updated: {
 		type: Date
 	},
 	created: {
 		type: Date,
 		default: Date.now
-	}
+	},
+	/* For reset password */
+	resetPasswordToken: {
+		type: String
+	},
+  	resetPasswordExpires: {
+  		type: Date
+  	}
 });
 
 /**

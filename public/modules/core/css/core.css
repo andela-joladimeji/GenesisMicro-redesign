@@ -208,20 +208,22 @@ a.scroll:after {
    width: 100%;
 }
 
-.scrollup, .scrolldown{
-    width: 40px;
-    height: 40px;
-    border-radius: 20px;
-    position: absolute;
-    left: 49%;  
+.scroll-to-top, .scrolldown{
+    width: 45px;
+    height: 45px;
+    border-radius: 22px;
+    left: 49%; 
 }
 
 .scrolldown{
     bottom: 0;
 }
 
+.scrollup img{
+    display: block;
+}
 
-.put, .insights-text, .candidates, .clients, .connect, .meet-team, .about{
+.put, .insights-text, .candidates, .clients, .connect, .meet-team, .about, .about-first-div{
     background-color: rgba(255, 0, 0, 0.6);
 }
 
@@ -232,7 +234,7 @@ a.scroll:after {
     font-size: 30px;
 }
 
-.period, .work, .deliver, .connect-text, .our-team, .about-us-text{
+.period, .work, .deliver, .connect-text, .our-team, .about-us-text, .about-second-div{
     background-color: rgba(255, 255, 255, 0.9);
 }
 
@@ -495,10 +497,6 @@ hr.divider{
     margin: 20px;
 }
 
-.scrollup{
-    top: 3920px;
-    background-color: #fff;
-}
 
 
 /*The footer*/
@@ -512,15 +510,18 @@ hr.divider{
 }
 
 .social-icon-twitter, .social-icon-linkedin, .icon-envelope, .connect-envelope{
-    width: 30px;
-    height: 30px;
     border-radius: 20px;
     font-size: 30px;
     margin-right: 12px;
     padding-top: 15%;
     padding-left: 20%;
-    background: #fff;
     color: #000;
+}
+
+.social-icon-twitter, .social-icon-linkedin, .icon-envelope{
+    background: #fff;
+    width: 30px;
+    height: 30px;
 }
 
 
@@ -533,7 +534,21 @@ footer{
   color: #fff;
   text-decoration: underline;
 }
+.scroll-to-top{
+    background-color: #fff;
+    text-align: center;
+    display: block;
+    top: 4570px; 
+}
 
+.scroll-to-top img{
+    width:45%;
+    margin-left: 10px;
+    margin-bottom: -10px;
+}
 
-
-
+.scrollup{
+    color: #000;
+    font-size: 12px;
+    display: block;
+}

@@ -24,6 +24,11 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
 			url: '/insights',
 			templateUrl: 'modules/core/views/insights.client.view.html'
 		})
+		.state('insights.blogs', {
+			 // /insights/date created/ name
+			url: '/insights/2013/10/1/avoidable-mistakes',
+			templateUrl: 'modules/core/views/insights-view.client.view.html'
+		})
 		.state('connect', {
 			url: '/contact',
 			templateUrl: 'modules/core/views/connect.client.view.html'
