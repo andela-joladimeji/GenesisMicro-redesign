@@ -6,10 +6,10 @@ body {
     overflow-x: hidden;
     color: #363636;
     font-family: 'Open Sans', sans-serif;
-    font-size: 18px;
-    line-height: 1.6em;
     font-weight: 400;
     font-style: normal;
+    font-size: 18px;
+    line-height: 1.6em;
 }
 
 .group:after, .group:before{
@@ -29,49 +29,16 @@ body {
     font-style: normal;
 }
 
-/*The navigation bar*/
-/*header
-background-color: rgba(0,0,0,.6);
-width: 100%;
-position: relative;
-z-index: 8001;
-}
-*/
-
 .logo{
    padding-left: 45px;
 }
 
-.header{
-    background-color: rgba(0, 0, 0, 0.5);
-    position: relative;
-    top:0;
-    left:0;
-    right:0;
-}
-.collapse.navbar-collapse.nav-padding ul{
-    margin-top: -5px;
+.navbar-inverse{
+    background: rgba(0, 0, 0, 0.5);
+    border: none !important;
 }
 
-.nav-padding{
-    padding-bottom: 25px;
-    padding-top: 30px;
-}
-.nav > li > a:hover, .nav > li > a:focus {
-    background: #ccc !important;
-}
-
-
-.header-ul{
-   margin-bottom: -10px !important;
-}
-
-.header-container{
-   margin-top: 15px;
-}
-
-
-.header ul li a{
+.nav li a{
    color: #fff;
 }
 
@@ -91,13 +58,7 @@ a.navi a:visited, a.navi.active {
 .logo a{
   color: #fff;
   letter-spacing: 3px;
-  font-size: 22px;
-}
-
-.menu{
-  margin-right: -20px;
-  margin-top: 22px;
-  font-size: 20px;
+  font-size: 16px;
 }
 
 .container-fluid{
@@ -105,9 +66,24 @@ a.navi a:visited, a.navi.active {
   margin: 0;
 }
 
-/*.navbar-brand, .navbar-nav > li > a:active {
-  color: #f2f2f2;
-}*/
+.navbar{
+    position: absolute;
+    right: 0;
+    left: 0;
+}
+
+.navbar-brand{
+    padding: 0;
+}
+
+.navbar-inverse .navbar-brand{
+    color: #fff;
+    margin-top: 7px;
+}
+
+.navbar-nav{
+    margin: 12px 30px;
+}
 
 .nav > li > a:hover, .nav > li > a:focus {
   background: none !important; 
@@ -116,10 +92,12 @@ a.navi a:visited, a.navi.active {
 .nav > li > a:hover, .nav > li > a:focus {
   background: none !important;
 }
-/*.content {
-  margin-top: 50px;
+
+.navbar-inverse .navbar-nav > li > a {
+    color: #fff;
+    font-size: 18px;
 }
-*/
+
 .undecorated-link:hover {
   text-decoration: none;
 }
@@ -135,10 +113,11 @@ a.navi a:visited, a.navi.active {
 } 
 
 /*The Home page*/
+
 /*The side navigation bars*/
 ul.scroll-balls {
   list-style: none;
-  font-size: 1.2em;
+  font-size: 0.8em;
   padding: 0;
   display: block;
   text-align: right;
@@ -270,6 +249,10 @@ div.put.text-center{
    left: 25%;
 }
 
+/*.second-div, .candidates-wrapper, .clients-wrapper{
+    margin: 0 auto;
+}*/
+
 /*The second div on the home page*/
 
 
@@ -340,7 +323,7 @@ hr.divider{
 }
 
 .candidates-div{
-    top: 1500px;
+    top: 1310px;
     left: 35%;
     width: 100%;
 }
@@ -447,7 +430,7 @@ hr.divider{
 }
 
 .team-gallery{
-    padding-top: 80px;
+    padding: 90px 0;
 }
 
 .meet-team-div{
@@ -550,7 +533,7 @@ footer{
     background-color: #fff;
     text-align: center;
     display: block;
-    top: 4570px; 
+    top: 4588px; 
 }
 
 .scroll-to-top img{

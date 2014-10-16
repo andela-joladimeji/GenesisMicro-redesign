@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-	db: process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || 'mongodb://localhost/genesis-micro',
+	db: 'mongodb://heroku:T24Y7Z504uuLMBtPAGRE-0gLiQ-WAKNIqi9XlH3WRONOOerbsafyjC2qhELEonhBrxX0eHIFZBbr8iUlW9UB1Q@linus.mongohq.com:10011/app30744545',
 	assets: {
 		lib: {
 			css: [
