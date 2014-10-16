@@ -24,7 +24,7 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
 			url: '/insights',
 			templateUrl: 'modules/core/views/insights.client.view.html'
 		})
-		.state('insights.blogs', {
+		.state('insights_blogs', {
 			 // /insights/date created/ name
 			url: '/insights/2013/10/1/avoidable-mistakes',
 			templateUrl: 'modules/core/views/insights-view.client.view.html'

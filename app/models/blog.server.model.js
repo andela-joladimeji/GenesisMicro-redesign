@@ -49,6 +49,11 @@ var CommentSchema = new Schema({
 		required: 'Please fill in your comment',
 		trim: true
 	},
+	status:{
+		type: Number,
+		enum: [0, 1, 2],
+		default: 0
+	},
 	created: {
 		type: Date,
 		default: Date.now

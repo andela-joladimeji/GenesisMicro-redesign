@@ -1,15 +1,16 @@
 'use strict';
 
 // Blogs controller
-angular.module('blogs').controller('BlogsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Blogs',
-	function($scope, $stateParams, $location, Authentication, Blogs ) {
+angular.module('blogs').controller('BlogsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Blogs', 'Comments',
+	function($scope, $stateParams, $location, Authentication, Blogs, Comments) {
 		$scope.authentication = Authentication;
 
 		// Create new Blog
 		$scope.create = function() {
 			// Create new Blog object
 			var blog = new Blogs ({
-				name: this.name
+				name: this.title,
+				content: this.content
 			});
 
 			// Redirect after save

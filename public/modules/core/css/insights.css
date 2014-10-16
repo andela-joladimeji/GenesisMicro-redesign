@@ -35,7 +35,7 @@ hr.group{
 }
 
 .insights-icon{
-    font-size: 10px;
+    font-size: 12px;
 }
 
 .insights-icon li{
@@ -44,7 +44,7 @@ hr.group{
 
 .insights-icon-li{
   display: inline-block;
-  margin-left: 10px;
+  margin-left: 12px;
 }
 
 .insights-view-icon, .insights-icon-li{

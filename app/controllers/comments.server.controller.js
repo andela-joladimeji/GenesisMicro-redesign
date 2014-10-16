@@ -104,17 +104,40 @@ exports.deleteComment = function(req, res) {
 
 //  };
 
+exports.approvedComment = function(){
+    var blog = req.blog;
+    // var blog.comments.comment.status = 0;
+    var approvedComment = req.body;
+    
+    if (req.user.role === 'admin'){
+        // blog.comments.comment.status = 1;
+        blog.save(function(err) {
+           if (err) {
+               return res.send(400, {
+                  message: blogs.getErrorMessage(err)
+               });
+            } else {
+                res.jsonp(blog);
+            }
+        });
+
+    }
+    console.log(blog.comments.comment.status);
+};
+
+
+
 
 exports.inappropriateComment = function(req, res) {
 
-        var markedComment = false; 
-        var blog = req.blog;
-        var inappropriate = req.body;
-        var index = 0;
-        blog.comments[index].inappropriate.judge = req.user;
-        console.log(req.user);
+    var markedComment = false; 
+    var blog = req.blog;
+    var inappropriate = req.body;
+    var index = 0;
+    blog.comments[index].inappropriate.judge = req.user;
+    console.log(req.user);
 
-        res.jsonp(blog.comments[index].inappropriate);
+    res.jsonp(blog.comments[index].inappropriate);
 // //         var index = 0;
 // //     var blog = req.blog;
 // //         like = req.body;
@@ -122,7 +145,7 @@ exports.inappropriateComment = function(req, res) {
 // //         console.log(blog.comments);
 // //         like.liker = req.user;
 // //          // blog.comments[index].inappropriate.push(inappropriate);
-// // }
+// // }1
 // //     var hasLiked = false; 
    
 //     if (!markedComment) {
