@@ -5,7 +5,6 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
 	function($stateProvider, $urlRouterProvider) {
 		// Redirect to home view when route not found
 		$urlRouterProvider.otherwise('/');
-
 		// Home state routing
 		$stateProvider.
 		state('home', {
@@ -20,19 +19,18 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
 			url: '/about-you',
 			templateUrl: 'modules/core/views/about-you.client.view.html'
 		})
-		.state('insights', {
-			url: '/insights',
-			templateUrl: 'modules/core/views/insights.client.view.html'
-		})
-		.state('insights_blogs', {
-			 // /insights/date created/ name
-			url: '/insights/2013/10/1/avoidable-mistakes',
-			templateUrl: 'modules/core/views/insights-view.client.view.html'
-		})
 		.state('connect', {
 			url: '/contact',
 			templateUrl: 'modules/core/views/connect.client.view.html'
+		})
+		.state('insights', {
+			url: '/insights',
+			templateUrl: 'modules/core/views/insights.client.view.html'
 		});
-
+		// .state('details', {
+		// 	url: '/insights',
+		// 	templateUrl: 'modules/core/views/insights.details.client.view.html'
+		// });
 	}
 ]);
+

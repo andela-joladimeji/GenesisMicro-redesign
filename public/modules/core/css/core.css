@@ -30,7 +30,7 @@ body {
 }
 
 .logo{
-   padding-left: 45px;
+    padding-left: 45px;
 }
 
 .navbar-inverse{
@@ -38,27 +38,16 @@ body {
     border: none !important;
 }
 
-.nav li a{
-   color: #fff;
+.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
+    color: #ccc !important;
 }
 
-a.navi a:visited, a.navi.active {
-    color: #e30202;
-}
 
-.header li{
-  display: inline-block;
-  padding: 0 12px;
-}
-
-.header li.active a.navi{
-    color: #e30202;
-}
 
 .logo a{
-  color: #fff;
-  letter-spacing: 3px;
-  font-size: 16px;
+    color: #fff;
+    letter-spacing: 3px;
+    font-size: 16px;
 }
 
 .container-fluid{
@@ -98,6 +87,13 @@ a.navi a:visited, a.navi.active {
     font-size: 18px;
 }
 
+
+.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
+    color: #e30202;
+    background: none !important;
+}
+
+
 .undecorated-link:hover {
   text-decoration: none;
 }
@@ -136,6 +132,14 @@ a.scroll {
 
 li.side-nav{
   display: block;
+}
+
+li.side-nav.active{
+    color: #e30202; 
+}
+
+a.scroll.active{
+    color: #e30202;  
 }
 
 li.side-nav a.scroll {

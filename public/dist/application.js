@@ -179,7 +179,14 @@ angular.module('blogs').controller('BlogsController', [
       $scope.blog = Blogs.get({ blogId: $stateParams.blogId });
     };
   }
-]);'use strict';
+]);// angular.module('core').directive('details', function(){
+//     return {
+//   	 	restrict: 'E',
+//   	 	templateUrl: 'modules/core/views/insights-details.client.view.html',
+//   	 	replace: true
+//   	}
+// });
+'use strict';
 //Blogs service used to communicate Blogs REST endpoints
 angular.module('blogs').factory('Blogs', [
   '$resource',
@@ -221,16 +228,16 @@ angular.module('core').config([
     }).state('about-you', {
       url: '/about-you',
       templateUrl: 'modules/core/views/about-you.client.view.html'
-    }).state('insights', {
-      url: '/insights',
-      templateUrl: 'modules/core/views/insights.client.view.html'
-    }).state('insights_blogs', {
-      url: '/insights/2013/10/1/avoidable-mistakes',
-      templateUrl: 'modules/core/views/insights-view.client.view.html'
     }).state('connect', {
       url: '/contact',
       templateUrl: 'modules/core/views/connect.client.view.html'
-    });
+    }).state('insights', {
+      url: '/insights',
+      templateUrl: 'modules/core/views/insights.client.view.html'
+    });  // .state('details', {
+         // 	url: '/insights',
+         // 	templateUrl: 'modules/core/views/insights.details.client.view.html'
+         // });
   }
 ]);'use strict';
 angular.module('core').controller('HeaderController', [
@@ -252,23 +259,41 @@ angular.module('core').controller('HeaderController', [
 ]);'use strict';
 angular.module('core').controller('HomeController', [
   '$scope',
+  '$state',
   'Authentication',
   'anchorSmoothScroll',
   '$anchorScroll',
   '$location',
-  function ($scope, Authentication, anchorSmoothScroll, $anchorScroll, $location) {
+  function ($scope, $state, Authentication, anchorSmoothScroll, $anchorScroll, $location) {
     // This provides Authentication context.
     $scope.authentication = Authentication;
+    $scope.$state = $state;
     $scope.gotoElement = function (eID) {
       // call $anchorScroll()
       anchorSmoothScroll.scrollTo(eID);
+      $scope.selected = eID;
     };
+    $scope.showDetails = false;
+    console.log($scope.showDetails);
+    //    $(window).scroll(function() {
+    // 	clearTimeout(scrollTimeout);
+    // 	if ($(window).scrollTop() > 400) {
+    // 		scrollTimeout = setTimeout(function(){$('a.scroll-top:hidden').fadeIn()}, 100);
+    // 	} 
+    // 	else {
+    // 		scrollTimeout = setTimeout(function(){$('a.scroll-top:visible').fadeOut()}, 100);
+    // 	}
+    // });
     $scope.gotoTop = function () {
       $location.hash('top');
       $anchorScroll();
     };
   }
-]);'use strict';
+]);// angular.module('core').controller('InsightController', ['$scope', 'Authentication', 
+// 	function($scope, Authentication){
+// 	}
+// ]);
+'use strict';
 //Menu service used for managing  menus
 angular.module('core').service('Menus', [function () {
     // Define a set of default roles

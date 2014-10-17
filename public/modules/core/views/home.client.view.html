@@ -1,139 +1,142 @@
 <section data-ng-controller="HomeController"  class="home">
     <div class="side-bar">
         <ul class="scroll-balls">
-            <li class="side-nav"><a class="scroll" scrollOnClick data-ng-href="/#!" data-ng-click="gotoElement('top')"><span class="scroll-span">PUTTING THE RIGHT PEOPLE IN THE RIGHT JOBS.</span></a></li>
-            <li class="side-nav"><a class="scroll" scrollOnClick data-ng-href="/#!" data-ng-click="gotoElement('candidates')"><span class="scroll-span">FOR CANDIDATES</span></a></li>
-            <li class="side-nav"><a class="scroll" scrollOnClick data-ng-href="/#!" data-ng-click="gotoElement('clients')"><span class="scroll-span">FOR CLIENT</span></a></li>
-            <li class="side-nav"><a class="scroll" scrollOnClick data-ng-href="/#!" data-ng-click="gotoElement('meet')"><span class="scroll-span">MEET TEAM MICROGENESIS</span></a></li>
+            <li class="side-nav"><a class="scroll" id="scroll-balls" scrollOnClick du-smooth-scroll du-scrollspy offset="30" data-ng-href="/#!/top" data-ng-click="gotoElement('top')" ng-class="{active:selected=='top'}" ><span class="scroll-span">PUTTING THE RIGHT PEOPLE IN THE RIGHT JOBS.</span></a></li>
+            <li class="side-nav"><a class="scroll" scrollOnClick du-smooth-scroll du-scrollspy offset="30" data-ng-href="/#!/candidates" data-ng-click="gotoElement('candidates')" ng-class="{active:selected=='candidates'}"><span class="scroll-span">FOR CANDIDATES</span></a></li>
+
+            <li class="side-nav"><a class="scroll" scrollOnClick du-smooth-scroll du-scrollspy offset="30" data-ng-href="/#!/clients" data-ng-click="gotoElement('clients')" ng-class="{active:selected=='clients'}"><span class="scroll-span">FOR CLIENT</span></a></li>
+
+            <li class="side-nav"><a class="scroll" scrollOnClick du-smooth-scroll du-scrollspy offset="30" data-ng-href="/#!/meet" data-ng-click="gotoElement('meet')" ng-class="{active:selected=='meet'}"><span class="scroll-span">MEET TEAM MICROGENESIS</span></a></li>
         </ul>
     </div>
-
-    <section id="top">
-        <div class="first-div-img img-responsive">
-            <div class="first-div">
-                <div class="put text-center pos-absolute">PUTTING THE RIGHT PEOPLE<br>IN THE RIGHT JOBS.</div>
-                <div class="period text-center pos-absolute"><em>Period.</em></div>
-                <img src="/modules/core/img/scroll.png" class="scrolldown pos-absolute">
+    <div id="container" du-scroll-container>
+        <section id="top">
+            <div class="first-div-img img-responsive">
+                <div class="first-div">
+                    <div class="put text-center pos-absolute">PUTTING THE RIGHT PEOPLE<br>IN THE RIGHT JOBS.</div>
+                    <div class="period text-center pos-absolute"><em>Period.</em></div>
+                    <img src="/modules/core/img/scroll.png" class="scrolldown pos-absolute">
+                </div>
             </div>
-        </div>
-        <div>
-            <div class="second-div">
-                <div class="wrapper group">
-                    <div class="row">
-                        <h4 class="text-center">RECRUITMENT FOR I.T. SPECIALISTS AND THE COMPANIES THAT HIRE THEM.</h4>
-                        <div class="col-md-6">
-                            <h4 class="text-center">WORK.</h4>
-                            <p>A trusted advisor to candidates and clients, RedStream<br>has connected exceptional I.T. professionals to<br> extraordinary career opportunities since 2007.</p>
-                        </div>
-                        <div class="col-md-6">
-                            <h4 class="text-center">HIRE</h4>
-                            <p>Our boutique size and high-touch, hands-on approach<br> promote deep relationships with our stakeholders and<br>translate to a greater understanding of their needs.</p>
+            <div>
+                <div class="second-div">
+                    <div class="wrapper group">
+                        <div class="row">
+                            <h4 class="text-center">RECRUITMENT FOR I.T. SPECIALISTS AND THE COMPANIES THAT HIRE THEM.</h4>
+                            <div class="col-md-6">
+                                <h4 class="text-center">WORK.</h4>
+                                <p>A trusted advisor to candidates and clients, RedStream<br>has connected exceptional I.T. professionals to<br> extraordinary career opportunities since 2007.</p>
+                            </div>
+                            <div class="col-md-6">
+                                <h4 class="text-center">HIRE</h4>
+                                <p>Our boutique size and high-touch, hands-on approach<br> promote deep relationships with our stakeholders and<br>translate to a greater understanding of their needs.</p>
+                            </div>
                         </div>
                     </div>
+                    <div class="col-md-12">
+                        <hr class="divider">
+                        <p><b>WHAT DOES THIS MEAN FOR YOU?</b>If you're looking to be hired, it means a more satisfying placement. If you're hiring, it<br> means getting the highest rate of return on your staffing investment. How do we do it? <a href="/#!">HERE'S THE SHORT ANSWER.</a>
+                        </p>
+                    </div>
+                    <div class="text-center">
+                        <img src="/modules/core/img/RedStream_Tag.jpg">
+                    </div>
                 </div>
-                <div class="col-md-12">
-                    <hr class="divider">
-                    <p><b>WHAT DOES THIS MEAN FOR YOU?</b>If you're looking to be hired, it means a more satisfying placement. If you're hiring, it<br> means getting the highest rate of return on your staffing investment. How do we do it? <a href="/#!">HERE'S THE SHORT ANSWER.</a>
+            </div>
+        </section>
+        <section id="candidates">
+            <div class="third-div-img img-responsive">
+                <div class="third-div">
+                    <div class="candidates-div pos-absolute">
+                        <div class="candidates"><p class="text-center">FOR CANDIDATES</p></div>
+                        <div class="work"><p class="text-center">Let's get to work.</p></div>
+                    </div>
+                </div>
+            </div>
+            <div class= "container">
+                <div class="row candidates-wrapper">
+                    <h4 class="text-center">IT'S NOT OUR JOB. IT'S YOURS. AND THAT DRIVES EVERYTHING WE DO.</h4>
+                    <div class="col-md-6">
+                        <p>At RedStream Technology, we know that whether you’re a<br>consultant or full-time hire, it’s more than a job. It’s your<br> career. It’s where you spend more than half your waking<br>hours. So it’s got to be about more than the day-to-day<br>work or even the paycheck. It’s about personalities.<br>Environment. Culture. Quality of life stuff.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p>We take a global approach to recruitment, not only<br>learning about what you do, but who you are and what you<br>want. It’s that personal approach that ensures the right<br>people wind up in the right place.</p>
+                        <p class="our-job">That’s our job.</p>
+                    </div>
+                    <div class="col-md-12">
+                        <hr class="divider">
+                        <p><b>WHAT DOES THIS MEAN FOR YOU?</b><a href="/#!">LEARN MORE</a>
                     </p>
-                </div>
-                <div class="text-center">
-                    <img src="/modules/core/img/RedStream_Tag.jpg">
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <section id="candidates">
-        <div class="third-div-img img-responsive">
-            <div class="third-div">
-                <div class="candidates-div pos-absolute">
-                    <div class="candidates"><p class="text-center">FOR CANDIDATES</p></div>
-                    <div class="work"><p class="text-center">Let's get to work.</p></div>
+        </section>
+        <section id="clients">
+            <div class="fifth-div-img img-responsive">
+                <div class="fifth-div">
+                    <div class="clients-div pos-absolute">
+                        <div class="clients"><p class="text-center">FOR CLIENTS</p></div>
+                        <div class="deliver"><p class="text-center">Delivering a holistic approach to recruiting.</p></div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class= "container">
-            <div class="row candidates-wrapper">
-                <h4 class="text-center">IT'S NOT OUR JOB. IT'S YOURS. AND THAT DRIVES EVERYTHING WE DO.</h4>
-                <div class="col-md-6">
-                    <p>At RedStream Technology, we know that whether you’re a<br>consultant or full-time hire, it’s more than a job. It’s your<br> career. It’s where you spend more than half your waking<br>hours. So it’s got to be about more than the day-to-day<br>work or even the paycheck. It’s about personalities.<br>Environment. Culture. Quality of life stuff.</p>
-                </div>
-                <div class="col-md-6">
-                    <p>We take a global approach to recruitment, not only<br>learning about what you do, but who you are and what you<br>want. It’s that personal approach that ensures the right<br>people wind up in the right place.</p>
-                    <p class="our-job">That’s our job.</p>
-                </div>
-                <div class="col-md-12">
-                    <hr class="divider">
-                    <p><b>WHAT DOES THIS MEAN FOR YOU?</b><a href="/#!">LEARN MORE</a>
-                </p>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section id="clients">
-        <div class="fifth-div-img img-responsive">
-            <div class="fifth-div">
-                <div class="clients-div pos-absolute">
-                    <div class="clients"><p class="text-center">FOR CLIENTS</p></div>
-                    <div class="deliver"><p class="text-center">Delivering a holistic approach to recruiting.</p></div>
-                </div>
-            </div>
-        </div>
-        <div class= "container">
-            <div class="row clients-wrapper">
-                <h4 class="text-center">FAVORING PERSONAL INTERACTIONS OVER PAPER TRANSACTIONS.</h4>
-                <div class="col-md-6">
-                    <p>Anyone can read a resume. For us, that’s just the start of the process. Because a candidate is more than the sum of their professional experiences. We evaluate each of our candidates to ensure they don’t just have the know-how for the job, but the soft skills to
+            <div class= "container">
+                <div class="row clients-wrapper">
+                    <h4 class="text-center">FAVORING PERSONAL INTERACTIONS OVER PAPER TRANSACTIONS.</h4>
+                    <div class="col-md-6">
+                        <p>Anyone can read a resume. For us, that’s just the start of the process. Because a candidate is more than the sum of their professional experiences. We evaluate each of our candidates to ensure they don’t just have the know-how for the job, but the soft skills to
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p>succeed in your environment. Then we deliver a small, exclusive subset from which to choose. At RedStream, we understand that getting it right isn't just an important decision, it's an investment you can't afford to get wrong.
+                        </p>
+                    </div>
+                    <div class="col-md-12">
+                        <hr>
+                        <p><strong>WHAT DOES THIS MEAN FOR YOU?</strong><a href="/#!">LEARN MORE</a>
                     </p>
-                </div>
-                <div class="col-md-6">
-                    <p>succeed in your environment. Then we deliver a small, exclusive subset from which to choose. At RedStream, we understand that getting it right isn't just an important decision, it's an investment you can't afford to get wrong.
-                    </p>
-                </div>
-                <div class="col-md-12">
-                    <hr>
-                    <p><strong>WHAT DOES THIS MEAN FOR YOU?</strong><a href="/#!">LEARN MORE</a>
-                </p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <section id="meet">
-        <div class="seventh-div-img img-responsive">
-            <div class="seventh-div">
-                <div class="pos-absolute meet-team-div">
-                    <div class="meet-team"><p class="text-center">MEET TEAM GENESISMICRO</p></div>
-                    <div class="our-team"><p class="text-center">This is our A-Team. There is no B-Team.</p></div>
-                </div> 
-            </div>
-        </div>
-        <div class= "container">
-            <div class="row team-gallery text-center">
-                <div class="gallery-quote">
-                    <p>“When you work with RedStream, you get the power of collaboration among a team that’s persistently, intrepidly, tenaciously dedicated to your success. ”</p>
-                    <p>— Sioux Logan, Founder</p>
+        </section>
+        <section id="meet">
+            <div class="seventh-div-img img-responsive">
+                <div class="seventh-div">
+                    <div class="pos-absolute meet-team-div">
+                        <div class="meet-team"><p class="text-center">MEET TEAM GENESISMICRO</p></div>
+                        <div class="our-team"><p class="text-center">This is our A-Team. There is no B-Team.</p></div>
+                    </div> 
                 </div>
-                
-                <div class="team group">
-                    <section>
-                        <ul class="gallery">
-                            <li>
-                                <img src="/modules/core/img/staff1.jpg" alt="" class="img-thumbnail"/>
-                            </li>
-                            <li>
-                                <img src="/modules/core/img/staff2.jpg" alt="" class="img-thumbnail"/>
-                            </li>
-                            <li>
-                                <img src="/modules/core/img/staff3.jpg"alt="" class="img-thumbnail"/>
-                            </li>
-                            <li>
-                                <img src="/modules/core/img/staff4.jpg" alt="" class="img-thumbnail"/>
-                            </li>
-                        </ul>
-                    </section>
-                </div>  
             </div>
-        </div>
-    </section>
+            <div class= "container">
+                <div class="row team-gallery text-center">
+                    <div class="gallery-quote">
+                        <p>“When you work with RedStream, you get the power of collaboration among a team that’s persistently, intrepidly, tenaciously dedicated to your success. ”</p>
+                        <p>— Sioux Logan, Founder</p>
+                    </div>
+                    
+                    <div class="team group">
+                        <section>
+                            <ul class="gallery">
+                                <li>
+                                    <img src="/modules/core/img/staff1.jpg" alt="" class="img-thumbnail"/>
+                                </li>
+                                <li>
+                                    <img src="/modules/core/img/staff2.jpg" alt="" class="img-thumbnail"/>
+                                </li>
+                                <li>
+                                    <img src="/modules/core/img/staff3.jpg"alt="" class="img-thumbnail"/>
+                                </li>
+                                <li>
+                                    <img src="/modules/core/img/staff4.jpg" alt="" class="img-thumbnail"/>
+                                </li>
+                            </ul>
+                        </section>
+                    </div>  
+                </div>
+            </div>
+        </section>
+    </div>
     <div class="scroll-to-top pos-absolute">
         <a href="/#!/#top" ng-click="gotoTop()" class="scrollup">
             <img src="/modules/core/img/scrollup.png">TOP
