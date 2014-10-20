@@ -25,12 +25,11 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
 		})
 		.state('insights', {
 			url: '/insights',
-			templateUrl: 'modules/core/views/insights.client.view.html'
+			templateUrl: 'modules/core/views/insights-folder/insights.home.client.view.html'
+		})
+		.state('insights_blog', {
+			url: '/insights/2013-10-1-avoidable-mistakes',
+			templateUrl: 'modules/core/views/insights-folder/insights.2013-10-1-avoidable-mistakes.client.view.html'
 		});
-		// .state('details', {
-		// 	url: '/insights',
-		// 	templateUrl: 'modules/core/views/insights.details.client.view.html'
-		// });
 	}
 ]);
-

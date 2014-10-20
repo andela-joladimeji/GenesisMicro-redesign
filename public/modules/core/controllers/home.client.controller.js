@@ -36,3 +36,14 @@ angular.module('core').controller('HomeController', ['$scope', '$state', 'Authen
 	}
 ]);
 
+angular.module('core').controller('InsightController', ['$scope', 'Authentication', 
+	function($scope, Authentication){
+
+	}
+]);
+
+angular.module('core').controller('InsightDetailsController', ['$scope', 'Authentication', 
+	function($scope, Authentication){
+
+	}
+]);

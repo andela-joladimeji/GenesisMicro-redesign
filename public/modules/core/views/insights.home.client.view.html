@@ -1,5 +1,5 @@
 <section data-ng-controller="HomeController">
-	<div ng-show="!showDetails">
+	<div>
 		<div class="insights-div-img">
 	        <div class="insights-div">
 	            <div class="insights-text text-center">THE VIEW FROM HIRE GROUND</div>
@@ -11,10 +11,10 @@
 	    			<div>
 		    			<hr>
 			            <ul class="insights-icon">
-			            	<li class="pull-left"><a href="#!/insights/2013/10/1/avoidable-mistakes" class="icon-comment"><span class="glyphicon glyphicon-comment"></span>Comments</a></li>
+			            	<li class="pull-left"><a href="#!/insights/2013-10-1-avoidable-mistakes" class="icon-comment"><span class="glyphicon glyphicon-comment"></span>Comments</a></li>
 							<li class="pull-left insights-icon-li"><a href="/#!" class=" icon-like"><i class="fa fa-heart"></i>Likes</a></li>
 							<li class="pull-left insights-icon-li"><a href="/#!" class=" icon-share"><i class="fa fa-share-alt"></i>Share</a></li>
-							<li class="pull-right"><a href="/#!/insights/2013/10/1/avoidable-mistakes" ng-click="showDetails=false" class="insights-view-icon">View Post &rarr;</a></li>
+							<li class="pull-right"><a href="/#!/insights/2013-10-1-avoidable-mistakes" ng-click="showDetails=true" class="insights-view-icon">View Post &rarr;</a></li>
 			            </ul>
 			            <hr class="group">
 			        </div>
@@ -37,12 +37,10 @@
 			        </div>
 
 		        </div>
-
-
 	    	</div>
 	    </div>
-	</div>
-    <div ng-show="showDetails" data-ng-include="'/modules/core/views/insights.details.client.view.html'"> </div>
+    </div>
+    <div data-ui-view></div>
 </section>
 
 

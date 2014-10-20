@@ -54,7 +54,7 @@ angular.module('admin').config([
     // Lists state routes
     $stateProvider.state('signInUser', {
       url: '/admin',
-      templateUrl: 'modules/admin/views/admin.signin.view.html'
+      templateUrl: 'modules/users/views/signin.client.view.html'
     });
   }
 ]);// // enable  and disable comment
@@ -233,11 +233,11 @@ angular.module('core').config([
       templateUrl: 'modules/core/views/connect.client.view.html'
     }).state('insights', {
       url: '/insights',
-      templateUrl: 'modules/core/views/insights.client.view.html'
-    });  // .state('details', {
-         // 	url: '/insights',
-         // 	templateUrl: 'modules/core/views/insights.details.client.view.html'
-         // });
+      templateUrl: 'modules/core/views/insights-folder/insights.home.client.view.html'
+    }).state('insights_blog', {
+      url: '/insights/2013-10-1-avoidable-mistakes',
+      templateUrl: 'modules/core/views/insights-folder/insights.2013-10-1-avoidable-mistakes.client.view.html'
+    });
   }
 ]);'use strict';
 angular.module('core').controller('HeaderController', [
@@ -288,6 +288,18 @@ angular.module('core').controller('HomeController', [
       $location.hash('top');
       $anchorScroll();
     };
+  }
+]);
+angular.module('core').controller('InsightController', [
+  '$scope',
+  'Authentication',
+  function ($scope, Authentication) {
+  }
+]);
+angular.module('core').controller('InsightDetailsController', [
+  '$scope',
+  'Authentication',
+  function ($scope, Authentication) {
   }
 ]);// angular.module('core').controller('InsightController', ['$scope', 'Authentication', 
 // 	function($scope, Authentication){

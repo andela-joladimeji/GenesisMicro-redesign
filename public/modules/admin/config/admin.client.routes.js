@@ -7,7 +7,7 @@ angular.module('admin').config(['$stateProvider',
     $stateProvider.
     state('signInUser', {
       url: '/admin',
-      templateUrl: 'modules/admin/views/admin.signin.view.html'
+      templateUrl: 'modules/users/views/signin.client.view.html'
     });
   }
 ]);
