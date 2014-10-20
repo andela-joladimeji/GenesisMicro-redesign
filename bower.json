@@ -1,7 +1,7 @@
 {
-	"name": "genesis-micro",
+	"name": "jobseekerapp",
 	"version": "0.0.1",
-	"description": "Genesis Micro redesign ",
+	"description": "An app for job seekers to search for jobs and for companies to post vacancies",
 	"dependencies": {
 		"bootstrap": "~3",
 		"angular": "~1.2",
@@ -10,8 +10,6 @@
 		"angular-bootstrap": "~0.11.0",
 		"angular-ui-utils": "~0.1.1",
 		"angular-ui-router": "~0.2.10"
-		// "ng-file-upload": "~1.6.12",
-		// "angular-scroll":"~0.6.2"
 	}
 }
 
