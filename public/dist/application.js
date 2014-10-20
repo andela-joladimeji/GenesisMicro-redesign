@@ -233,10 +233,10 @@ angular.module('core').config([
       templateUrl: 'modules/core/views/connect.client.view.html'
     }).state('insights', {
       url: '/insights',
-      templateUrl: 'modules/core/views/insights-folder/insights.home.client.view.html'
+      templateUrl: 'modules/core/views/insights.home.client.view.html'
     }).state('insights_blog', {
       url: '/insights/2013-10-1-avoidable-mistakes',
-      templateUrl: 'modules/core/views/insights-folder/insights.2013-10-1-avoidable-mistakes.client.view.html'
+      templateUrl: 'modules/core/views/insights.2013-10-1-avoidable-mistakes.client.view.html'
     });
   }
 ]);'use strict';
