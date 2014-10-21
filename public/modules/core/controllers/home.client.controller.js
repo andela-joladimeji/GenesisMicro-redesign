@@ -1,7 +1,7 @@
 'use strict';
 
 
-angular.module('core').controller('HomeController', ['$scope', '$state', 'Authentication', 'anchorSmoothScroll', '$anchorScroll', '$location',
+angular.module('core').controller('HomeController', ['$scope', '$state', 'Authentication', 'anchorSmoothScroll', '$anchorScroll', '$location', 
 	function($scope, $state, Authentication, anchorSmoothScroll, $anchorScroll, $location) {
 		// This provides Authentication context.
 		$scope.authentication = Authentication;
@@ -16,8 +16,7 @@ angular.module('core').controller('HomeController', ['$scope', '$state', 'Authen
 	    };
 
 	    $scope.showDetails = false;
-	    console.log($scope.showDetails);
-	 //    $(window).scroll(function() {
+	 	//    $(window).scroll(function() {
 		// 	clearTimeout(scrollTimeout);
 		// 	if ($(window).scrollTop() > 400) {
 		// 		scrollTimeout = setTimeout(function(){$('a.scroll-top:hidden').fadeIn()}, 100);
@@ -26,7 +25,7 @@ angular.module('core').controller('HomeController', ['$scope', '$state', 'Authen
 		// 		scrollTimeout = setTimeout(function(){$('a.scroll-top:visible').fadeOut()}, 100);
 		// 	}
 		// });
-		
+		// $('#sidebar').scrollspy();
 
 	    
 	    $scope.gotoTop = function(){

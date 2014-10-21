@@ -274,7 +274,6 @@ angular.module('core').controller('HomeController', [
       $scope.selected = eID;
     };
     $scope.showDetails = false;
-    console.log($scope.showDetails);
     //    $(window).scroll(function() {
     // 	clearTimeout(scrollTimeout);
     // 	if ($(window).scrollTop() > 400) {
@@ -284,6 +283,7 @@ angular.module('core').controller('HomeController', [
     // 		scrollTimeout = setTimeout(function(){$('a.scroll-top:visible').fadeOut()}, 100);
     // 	}
     // });
+    // $('#sidebar').scrollspy();
     $scope.gotoTop = function () {
       $location.hash('top');
       $anchorScroll();
