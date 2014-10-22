@@ -23,6 +23,10 @@ module.exports = function(app) {
         .delete(users.requiresLogin, blogs.hasAuthorization, blogs.delete);
 
 // users
+    app.route('/blogs/:blogId/selected')
+        .put(users.requiresLogin, blogs.selected);
+
+// users
     app.route('/blogs/:blogId/like')
         .post(users.requiresLogin, blogs.likePost);
 

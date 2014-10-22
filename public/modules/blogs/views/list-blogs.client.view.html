@@ -1,19 +1,24 @@
-<section data-ng-controller="BlogsController" data-ng-init="find()">
+<section class="content-margin" data-ng-controller="BlogsController" data-ng-init="find()">
     <div class="page-header">
         <h1>Blogs</h1>
     </div>
     <div class="list-group">
-        <a data-ng-repeat="blog in blogs" data-ng-href="#!/blogs/{{blog._id}}" class="list-group-item">
+        <a data-ng-repeat="blog in blogs" data-ng-href="#!/admin/blogs/{{blog._id}}" class="list-group-item">
+            <h3>Blog Title <b data-ng-bind="blog.title "></b></h3>
 			<small class="list-group-item-text">
 				Posted on
 				<span data-ng-bind="blog.created | date:'medium'"></span>
 				by
-				<span data-ng-bind="blog.user.displayName"></span>
+				<span data-ng-bind="blog.user.username"></span>
 			</small>
-			<h4 class="list-group-item-heading" data-ng-bind="blog.name"></h4>
+            <div>
+                <span data-ng-bind="blog.blogContent | limitTo:200"></span>
+                <span data-ng-show="blog.blogContent.length > 200">...</span>
+            </div>
         </a>
     </div>
     <div class="alert alert-warning text-center" data-ng-hide="!blogs.$resolved || blogs.length">
-    	No Blogs yet, why don't you <a href="/#!/blogs/create">create one</a>?
+    	No Blogs yet, why don't you <a href="/#!/admin/blogs/create">create one</a>?
     </div>
 </section>
+

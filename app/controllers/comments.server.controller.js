@@ -19,7 +19,7 @@ exports.addComment = function(req, res) {
 
     blog.save(function(err) {
         if (err) {
-            return res.send(400, {
+            return res.status(400).send({
                 message: blogs.getErrorMessage(err)
             });
         }   
@@ -43,7 +43,7 @@ exports.deleteComment = function(req, res) {
 
         blog.save(function(err){
             if(err) {
-                return res.send(400, {
+                return res.status(400).send({
                     message: 'comment delete failed'
                 });
             }
@@ -53,7 +53,7 @@ exports.deleteComment = function(req, res) {
         });
     }
      else{
-        return res.send( 401,{
+        return res.status(401).send({
             message: 'User is not authorized'
         });
     }
@@ -113,7 +113,7 @@ exports.approvedComment = function(){
         // blog.comments.comment.status = 1;
         blog.save(function(err) {
            if (err) {
-               return res.send(400, {
+               return res.status(400).send({
                   message: blogs.getErrorMessage(err)
                });
             } else {
@@ -183,7 +183,7 @@ exports.commentByID = function(req, res, next, id) {
  */
 exports.hasAuthorization = function(req, res, next) {
     if (req.comment.creator._id !== req.user.id) {
-        return res.send(403, {
+        return res.status(403).send({
             message: 'You are not authorized'
         });
     }

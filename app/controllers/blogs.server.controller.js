@@ -43,7 +43,7 @@ exports.create = function(req, res) {
    
         blog.save(function(err) {
             if (err) {
-                return res.send(400, {
+                return res.status(400).send({
                     message: getErrorMessage(err)
                 });
             } else {
@@ -51,7 +51,7 @@ exports.create = function(req, res) {
             }
         });
     }else{
-        return res.send( 401,{
+        return res.status(401).send({
             message: 'User is not authorized'
         });
     }
@@ -66,7 +66,7 @@ exports.read = function(req, res) {
         res.jsonp(req.blog);
     } 
     else{
-        return res.send( 401,{
+         return res.status(401).send({
             message: 'User is not authorized'
         });
     }
@@ -84,7 +84,7 @@ exports.update = function(req, res) {
 
         blog.save(function(err) {
             if (err) {
-                return res.send(400, {
+                return res.status(400).send({
                     message: getErrorMessage(err)
                 });
             } else {
@@ -93,10 +93,40 @@ exports.update = function(req, res) {
         });
     }
     else{
-        return res.send( 401,{
+         return res.status(401).send({
             message: 'User is not authorized'
         });
     }
+};
+
+
+exports.selected = function(req, res) {
+     console.log(req.body);
+    // console.log('content:',req.blog.blogContent);
+    if (req.body.selected ==='true'){
+        console.log(req.blog);
+        var blog = new Blog(req.body);
+        //blog.user = req.body.user;
+        //var blog = req.blog;
+
+        blog = _.extend(blog, req.body);
+        console.log(blog);
+
+        // blog.save(
+        //      {_id: req.params.blogId },
+        //      {$set: {'selected': blog.selected}},
+        //       function (err) {
+        //          if (err) {
+        //             res.status(400).send({ 
+        //                 message: err 
+        //             });
+        //          } else {
+        //             res.jsonp(blog);
+        //          }
+        //       }
+        // );
+    }
+    
 };
 
 // exports.postBlog= function(req, res) {
@@ -115,7 +145,7 @@ exports.delete = function(req, res) {
 
         blog.remove(function(err) {
             if (err) {
-                return res.send(400, {
+                return res.status(400).send({
                     message: getErrorMessage(err)
                 });
             } else {
@@ -125,7 +155,7 @@ exports.delete = function(req, res) {
     }  
 
     else{
-        return res.send( 401,{
+        return res.status(401).send({
             message: 'User is not authorized'
         });
     }
@@ -139,7 +169,7 @@ exports.list = function(req, res, next) {
         
         Blog.find().sort('-created').populate('user', 'username').exec(function(err, blogs) {
             if (err) {
-                return res.send(400, {
+                return res.status(400).send({
                     message: getErrorMessage(err)
                 });
             } else {
@@ -148,7 +178,7 @@ exports.list = function(req, res, next) {
         });
     }
     else{
-        return res.send( 401,{
+        return res.status(401).send({
             message: 'User is not authorized'
         });
     }
@@ -164,8 +194,8 @@ exports.list = function(req, res, next) {
     var hasLiked = false; 
     
     if (req.user.id === blog.user._id.toString()) { 
-        return res.send(400, {
-               message: 'You cannot like your own post'
+        return res.status(400).send({
+            message: 'You cannot like your own post'
         });
     } else {
         for(var i = 0; i < blog.likes.length; i++) {
@@ -179,8 +209,8 @@ exports.list = function(req, res, next) {
 
             blog.save(function(err) {
                if (err) {
-                   return res.send(400, {
-                      message: getErrorMessage(err)
+                    return res.status(400).send({
+                       message: getErrorMessage(err)
                    });
                 } else {
                     res.jsonp(blog);
@@ -188,7 +218,7 @@ exports.list = function(req, res, next) {
             });
         } 
         else {
-            return res.send(400, {
+            return res.status(400).send({
                message: 'you have already liked this post before'
             });
         }
@@ -205,6 +235,7 @@ exports.blogByID = function(req, res, next, id) {
         if (err) return next(err);
         if (!blog) return next(new Error('Failed to load blog ' + id));
         req.blog = blog;
+        console.log('it got here');
         next();
     });
 };
@@ -214,7 +245,7 @@ exports.blogByID = function(req, res, next, id) {
  */
 exports.hasAuthorization = function(req, res, next) {
     if (req.blog.user.id !== req.user.id) {
-        return res.send(403, {
+        return res.status(403).send({
             commMessage: 'User is not authorized'
         });
     }

@@ -1,4 +1,4 @@
-<section class="content-margin" data-ng-controller="BlogsController" data-ng-init="selectedBlog()">
+<section class="content-margin" data-ng-controller="BlogsController" data-ng-init="findOne()">
 	<div class="page-header">
 		<h4>Blog Title: <b data-ng-bind="blog.title"></b></h4>
 	</div>
@@ -13,15 +13,6 @@
 	<div>
 		<p>Blog Body: <b data-ng-bind="blog.blogContent"></b></p>
     </div>
-    <div class="pull-right" data-ng-show="authentication.user._id == blog.user._id">
-		<a class="btn btn-primary" href="/#!/admin/blogs/{{blog._id}}/edit">
-			<i class="glyphicon glyphicon-edit"></i>
-		</a>
-		<a class="btn btn-primary" data-ng-click="remove();">
-			<i class="glyphicon glyphicon-trash"></i>
-		</a>
-		<a  data-ng-href="/#!/admin/displayBlog" class="btn btn-warning btn-sm" data-ng-click="selectBlog(blog)">Display Blog</a>
-	</div>
 	<div class="col-md-12">
         <form class="form-horizontal" data-ng-submit="create()" novalidate>
             <fieldset>

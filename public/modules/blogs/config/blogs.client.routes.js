@@ -6,19 +6,19 @@ angular.module('blogs').config(['$stateProvider',
 		// Blogs state routing
 		$stateProvider.
 		state('listBlogs', {
-			url: '/blogs',
+			url: '/admin/blogs',
 			templateUrl: 'modules/blogs/views/list-blogs.client.view.html'
 		}).
 		state('createBlog', {
-			url: '/blogs/create',
+			url: '/admin/blogs/create',
 			templateUrl: 'modules/blogs/views/create-blog.client.view.html'
 		}).
 		state('viewBlog', {
-			url: '/blogs/:blogId',
+			url: '/admin/blogs/:blogId',
 			templateUrl: 'modules/blogs/views/view-blog.client.view.html'
 		}).
 		state('editBlog', {
-			url: '/blogs/:blogId/edit',
+			url: '/admin/blogs/:blogId/edit',
 			templateUrl: 'modules/blogs/views/edit-blog.client.view.html'
 		});
 	}

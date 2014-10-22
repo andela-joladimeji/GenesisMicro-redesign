@@ -74,7 +74,7 @@ var BlogSchema = new Schema({
 		required: 'Please fill a title',
 		trim: true
 	},
-	content: {
+	blogContent: {
 		type: String,
 		default: '',
 		required: 'Please put in your news for the week',
@@ -87,6 +87,10 @@ var BlogSchema = new Schema({
 	user: {
 		type: Schema.ObjectId,
 		ref: 'User'
+	},
+	selected: {
+		type: Boolean,
+		default: false
 	},
 	comments: [CommentSchema],
 	likes: [LikeSchema]
