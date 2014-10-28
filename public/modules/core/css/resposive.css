@@ -1,0 +1,8 @@
+/*the home page*/
+@mediascreen and (min-width: 480px){
+	.logo p{
+		font-size: 10px;
+		margin-top: -2%;
+		color: red;
+	}
+}

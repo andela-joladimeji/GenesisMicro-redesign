@@ -8,9 +8,8 @@
 }
 
 .about-us-div{
-    position: absolute;
-    width: 100%;
-    top: 300px;
+/*    width: 100%;*/
+   bottom: 1%;
 }
 
 .about-us-text p{
@@ -22,7 +21,7 @@
 
 .about-us-text{
     margin: 30px auto;
-    width: 60%;
+/*    width: 60%;*/
     padding: 11px 10px;
 }
 
@@ -34,12 +33,12 @@
 
 .about{
     margin: 30px auto;
-    width: 25%;
+   /* width: 25%;*/
     padding: 11px 0;
 }
 
 .about-container{
-    max-width: 960px;
+/*    max-width: 960px;*/
     margin: 0 auto;
     padding: 60px 0;
 }

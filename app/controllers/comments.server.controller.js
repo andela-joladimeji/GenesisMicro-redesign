@@ -104,26 +104,26 @@ exports.deleteComment = function(req, res) {
 
 //  };
 
-exports.approvedComment = function(){
-    var blog = req.blog;
-    // var blog.comments.comment.status = 0;
-    var approvedComment = req.body;
+// exports.approvedComment = function(){
+//     var blog = req.blog;
+//     // var blog.comments.comment.status = 0;
+//     var approvedComment = req.body;
     
-    if (req.user.role === 'admin'){
-        // blog.comments.comment.status = 1;
-        blog.save(function(err) {
-           if (err) {
-               return res.status(400).send({
-                  message: blogs.getErrorMessage(err)
-               });
-            } else {
-                res.jsonp(blog);
-            }
-        });
+//     if (req.user.role === 'admin'){
+//         // blog.comments.comment.status = 1;
+//         blog.save(function(err) {
+//            if (err) {
+//                return res.status(400).send({
+//                   message: blogs.getErrorMessage(err)
+//                });
+//             } else {
+//                 res.jsonp(blog);
+//             }
+//         });
 
-    }
-    console.log(blog.comments.comment.status);
-};
+//     }
+//     console.log(blog.comments.comment.status);
+// };
 
 
 

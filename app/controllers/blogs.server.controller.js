@@ -100,40 +100,62 @@ exports.update = function(req, res) {
 };
 
 
-exports.selected = function(req, res) {
-     console.log(req.body);
-    // console.log('content:',req.blog.blogContent);
-    if (req.body.selected ==='true'){
-        console.log(req.blog);
-        var blog = new Blog(req.body);
-        //blog.user = req.body.user;
-        //var blog = req.blog;
+exports.selectedOne = function(req, res) {
+    var blog = req.blog;
+    // var blogs;
+    // console.log(blogs);
+    // for (blog in blogs)
 
-        blog = _.extend(blog, req.body);
-        console.log(blog);
+    if (req.user.role === 'admin')
+    {
+        Blog.where().update({selected:true},{$set:{selected:false}},{multi:true}).exec(function(err,blog_update){
+            
+            console.log(blog_update,'update to false');
+            console.log(blog);
+            if(!err)
+            {
+                blog.selected = req.body.selected;
+                // blog.selected = true;
+                console.log(blog);
+                blog = _.extend(blog, req.body);
+                blog.save(function(err) {
+                    if (err) {
+                        return res.status(400).send({
+                            message: getErrorMessage(err)
+                        });
+                    } else {
 
-        // blog.save(
-        //      {_id: req.params.blogId },
-        //      {$set: {'selected': blog.selected}},
-        //       function (err) {
-        //          if (err) {
-        //             res.status(400).send({ 
-        //                 message: err 
-        //             });
-        //          } else {
-        //             res.jsonp(blog);
-        //          }
-        //       }
-        // );
+                        res.jsonp(blog);
+                        console.log(blog);
+                    }
+                });
+            }           
+        });
+        
     }
     
 };
 
-// exports.postBlog= function(req, res) {
-//   if (user.roles='admin') || (post){
-//         res.jsonp(req.blog);
-//     }  
-// };
+
+exports.chosenBlog = function(req, res) {
+    Blog.find({selected: true}).populate('user', 'username').exec(function(err, blog) {
+
+        if (err) {
+            return res.status(400).send({
+                message: getErrorMessage(err)
+            });
+        } 
+        else {
+            res.jsonp(blog); 
+            console.log(blog);
+        }
+    });
+   
+};
+
+
+
+
 
 /**
  * Delete a blog
@@ -235,7 +257,6 @@ exports.blogByID = function(req, res, next, id) {
         if (err) return next(err);
         if (!blog) return next(new Error('Failed to load blog ' + id));
         req.blog = blog;
-        console.log('it got here');
         next();
     });
 };

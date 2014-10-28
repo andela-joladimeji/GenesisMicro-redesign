@@ -14,6 +14,7 @@ body {
     font-style: normal;
     font-size: 18px;
     line-height: 1.6em;
+    height: 100%;
 }
 
 .group:after, .group:before{
@@ -54,6 +55,9 @@ body {
     font-size: 16px;
 }
 
+.logo p{
+  margin: 2% 0;
+}
 .container-fluid{
   padding: 0;
   margin: 0;
@@ -113,6 +117,9 @@ body {
     position: absolute;
 } 
 
+.pos-relative{
+  position: relative;
+}
 /*The Home page*/
 
 /*The side navigation bars*/
@@ -199,13 +206,18 @@ a.scroll:after {
     background-size: cover !important;
     background-repeat: no-repeat !important;
     background-attachment: fixed !important;
-    height: 590px;
+    height: 700px;
 }
 
 .first-div{
    height: 100%;
-   position: relative;
    width: 100%;
+}
+
+
+.home-first-text{
+   bottom: 90%;
+   left: 0;
 }
 
 .scroll-to-top, .scrolldown{
@@ -228,7 +240,7 @@ a.scroll:after {
 }
 
 .put, .insights-text{
-    width: 50%;
+/*    width: 50%;*/
     padding: 5px;
     font-weight: bold;
     font-size: 30px;
@@ -239,8 +251,9 @@ a.scroll:after {
 }
 
 .period{
-    width: 10%;
+   /* width: 10%;*/
     padding: 15px 1px;
+   /* margin-left: 19%;*/
     /*font-family: "proxima-nova";*/
     font-size: 1.6em;
     line-height: 1.6em;
@@ -248,14 +261,13 @@ a.scroll:after {
   /*  font-weight: 400;*/
 }
 
-div.period.text-center{
+/*div.period.text-center{
    bottom: 130px;
    left: 45%;
 }
-
+*/
 div.put.text-center{
-   bottom: 215px;
-   left: 25%;
+  margin-bottom: 2%;
 }
 
 /*.second-div, .candidates-wrapper, .clients-wrapper{
@@ -267,8 +279,8 @@ div.put.text-center{
 
 .second-div{
     max-width: 960px;
-   margin: 0 auto;
-   padding-top: 40px;
+    margin: 0 auto;
+    padding: 8% 0;
 }
 
 .second-div img{
@@ -288,11 +300,8 @@ div.put.text-center{
 }
 
 .work{
-    bottom: 130px;
-    left: 50%;
-    width: 20%;
-    padding: 7px 1px;
-    margin-left: 64px;
+/*    width: 24%;
+    margin-left: 10%;*/
 }
 
 
@@ -317,11 +326,10 @@ hr.divider{
     background-size: cover !important;
     background-repeat: no-repeat !important;
     background-attachment: fixed !important;
-    height: 550px;
+    height: 800px;
 }
 
 .candidates-wrapper{
-    max-width: 850px;
     margin: 99px auto;
 }
 
@@ -332,14 +340,14 @@ hr.divider{
 }
 
 .candidates-div{
-    top: 1310px;
-    left: 35%;
-    width: 100%;
+    bottom: 70%;
+/*    left: 28%;
+    width: 100%;*/
 }
 
 .candidates{
-    width: 31%;
-    padding: 4px;
+    /*width: 43%;*/
+    padding: 1%;
     margin-bottom: 20px;
 }
 
@@ -369,9 +377,10 @@ hr.divider{
 }
 
 .clients-div{
-    top: 2400px;
-    left: 26%;
-    width: 100%;
+    bottom: 100%;
+
+ /*   left: 26%;
+    width: 100%;*/
 }
 
 .clients-div p{
@@ -384,15 +393,13 @@ hr.divider{
 }
 
 .clients{
-    width: 25%;
-    margin-bottom: 20px;
-    margin-left: 161px;
+/*    margin-left: 8%;*/
     letter-spacing: 7px;
 }
 
 .deliver{
     letter-spacing: 1px;
-    width: 47%;
+ /*   width: 47%;*/
     padding: 7px 0;
 }
 
@@ -404,13 +411,16 @@ hr.divider{
 }
 
 .clients-wrapper{
-    max-width: 850px;
+   /* max-width: 850px;*/
     margin: 99px auto;
 }
 
+.clients-wrapper h4{
+  line-height: 1.7em;
+}
 
 .clients{
-    width: 31%;
+/*    width: 31%;*/
     padding: 4px;
     margin-bottom: 20px;
 }
@@ -421,7 +431,7 @@ hr.divider{
     font-size: 2em;
     letter-spacing: 7px;
 }
-
+.
 /*Seventh div*/
 
 .seventh-div{
@@ -443,9 +453,9 @@ hr.divider{
 }
 
 .meet-team-div{
-    top: 3500px;
-    left: 24%;
-    width: 100%;
+    bottom: 130%;
+/*    left: 24%;
+    width: 100%;*/
 }
 
 .meet-team-div p{
@@ -458,16 +468,16 @@ hr.divider{
 }
 
 .meet-team{
-    width: 52%;
+/*    width: 52%;*/
     margin-bottom: 20px;
     letter-spacing: 7px;
 }
 
 .our-team{
     letter-spacing: 1px;
-    width: 43%;
+/*    width: 43%;*/
     padding: 7px 0;
-    margin-left: 30px;
+/*    margin-left: 30px;*/
 }
 
 .our-team p{
@@ -542,13 +552,13 @@ footer{
     background-color: #fff;
     text-align: center;
     display: block;
-    top: 4588px; 
+    top: 5020px; 
 }
 
 .scroll-to-top img{
     width:45%;
-    margin-left: 10px;
-    margin-bottom: -10px;
+    margin-left: 13px;
+    margin-bottom: -5px;
 }
 
 .scrollup{
@@ -556,3 +566,5 @@ footer{
     font-size: 12px;
     display: block;
 }
+
+

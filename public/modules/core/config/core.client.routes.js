@@ -19,17 +19,38 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
 			url: '/about-you',
 			templateUrl: 'modules/core/views/about-you.client.view.html'
 		})
-		.state('connect', {
+		.state('contact', {
 			url: '/contact',
 			templateUrl: 'modules/core/views/connect.client.view.html'
 		})
-		.state('insights', {
-			url: '/insights',
+		.state({'testimonial',
+			url: '/testimonial',
+			templateUrl: 'modules/core/views/testimonial.client.view.html'
+		})
+		.state('community', {
+			url: '/community',
 			templateUrl: 'modules/core/views/insights.home.client.view.html'
 		})
-		.state('insights_blog', {
-			url: '/insights/2013-10-1-avoidable-mistakes',
+		.state('clientsComments', {
+			url: '/clientsComments',
+			templateUrl: 'modules/core/views/clientsComments.client.view.html'
+		})
+		.state('download', {
+			url: '/download',
+			templateUrl: 'modules/core/views/downloads.client.view.html'
+		})
+		.state('our_vision', {
+			url: '/our_vision',
+			templateUrl: 'modules/core/views/vision.client.view.html'
+		})
+		.state('customer-story',{
+			url: '/customer-success-story',
+			templateUrl: 'modules/core/views/customer-story.view.html'
+		})
+		.state('community_blog', {
+			url: '/community/2013-10-1-avoidable-mistakes',
 			templateUrl: 'modules/core/views/insights.2013-10-1-avoidable-mistakes.client.view.html'
 		});
 	}
 ]);
+

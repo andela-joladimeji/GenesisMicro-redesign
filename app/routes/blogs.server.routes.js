@@ -24,7 +24,10 @@ module.exports = function(app) {
 
 // users
     app.route('/blogs/:blogId/selected')
-        .put(users.requiresLogin, blogs.selected);
+        .put(users.requiresLogin, blogs.selectedOne);
+
+    app.route('/selected')  
+        .get(users.requiresLogin, blogs.chosenBlog);
 
 // users
     app.route('/blogs/:blogId/like')
@@ -46,8 +49,8 @@ module.exports = function(app) {
      app.route('/blogs/:blogId/comments/:commentId/inappropriate')
         .post(users.requiresLogin, comments.inappropriateComment);
 
-    app.route('/blogs/:blogId/comments/:commentId/approved')
-        .post(users.requiresLogin, comments.hasAuthorization, comments.approvedComment);
+    // app.route('/blogs/:blogId/comments/:commentId/approved')
+    //     .post(users.requiresLogin, comments.hasAuthorization, comments.approvedComment);
     // Finish by binding the blog middleware
     app.param('blogId', blogs.blogByID);
 

@@ -15,7 +15,35 @@ angular.module('core').controller('HomeController', ['$scope', '$state', 'Authen
 
 	    };
 
+
+	 //    $scope.locations= [
+	 //    	{
+	 //    		area: ikoyi,
+	 //    		address: 10, ikoyi
+		//     },
+		//     {
+		//     	area: Yaba,
+		//     	address: 102, herbert macsulay
+		//     },
+		//     {
+		//     	area: eypt,
+		//     	address: kairo
+		//     }
+		// ];
+
+	    
+
 	    $scope.showDetails = false;
+	    $scope.showLocation= function(){
+	    	$scope.displayLocation=!$scope.displayLocation;
+	    
+	    };
+	    
+	    $scope.hideLocation = function(){
+	    	$scope.displayLocation=false;
+	    	console.log("hide");	
+	    };
+	  
 	 	//    $(window).scroll(function() {
 		// 	clearTimeout(scrollTimeout);
 		// 	if ($(window).scrollTop() > 400) {

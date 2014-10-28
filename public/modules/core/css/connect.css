@@ -9,25 +9,18 @@
 }
 
 .connect-div{
-    height: 60%;
-    top: 250px;
-    left: 30%;
-    width: 100%;
+    bottom: 11%;
 }
 
 .connect{
-    width: 20%;
     font-weight: 800;
     line-height: 2.6em;
     letter-spacing: 4px;
     margin-bottom: 20px;
     font-size: 1.7em;
-    margin-left: 136px;
-
 }
 
 .connect-text{
-    width: 40%;
     padding: 15px 1px;
     font-weight: 400;
     font-size: 1.6em;

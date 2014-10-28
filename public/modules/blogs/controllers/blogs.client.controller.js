@@ -1,8 +1,8 @@
 'use strict';
 
 // Blogs controller
-angular.module('blogs').controller('BlogsController', ['$scope', '$stateParams', '$location', '$http', 'Authentication', 'Blogs', 'SelectedBlog','Comments',
-	function($scope, $stateParams, $location, $http, Authentication, Blogs, SelectedBlog, Comments) {
+angular.module('blogs').controller('BlogsController', ['$scope', '$stateParams', '$location', '$http', 'Authentication', 'Blogs','Comments',
+	function($scope, $stateParams, $location, $http, Authentication, Blogs, Comments) {
 		$scope.authentication = Authentication;
 
 		// Create new Blog
@@ -66,89 +66,49 @@ angular.module('blogs').controller('BlogsController', ['$scope', '$stateParams',
 			$scope.blog = Blogs.get({ 
 				blogId: $stateParams.blogId
 			});
-			console.log($scope.blog.blogContent);
-			console.log($scope.blog.created);
-			console.log($scope.blog);
+			// console.log($scope.blog);
+			// console.log(typeof($scope.blog.selected));
+			// console.log($scope.blog.selected);
+
 		};
 
 		$scope.selectBlog = function(blog_state) {
-
-
 			$scope.selectedBlog = blog_state;
 			$scope.selectedBlog.selected = true;
 			var blog = new Blogs ({
 				title: $scope.selectedBlog.title,
 				blogContent: $scope.selectedBlog.blogContent,
-				selected: $scope.selectedBlog.selected,
-				blogId: $stateParams.blogId,
-				Comments: $scope.selectedBlog.comments,
-				// likes: $scope.selectedBlog.likes,
-				// created: $scope.selectedBlog.created
+				selected: $scope.selectedBlog.selected
 			});
-			// blogs/:blogId/selected
-			console.log(blog.blogId);
-			console.log($stateParams.blogId);
-			blog.$update(function(response) {
-				console.log(response);
-			// 	// $location.path('admin/blogs/' + blog.created + );
-			}, function(errorResponse) {
-				$scope.error = errorResponse.data.message;
-			});
-
+			console.log(blog);
+			$http.put('/blogs/' + $stateParams.blogId + '/selected', blog).success(function(response){
+				// If successful show success message and clear form
+            	$scope.success = true;
+	            // $scope.appt = response;
+	            console.log(response);
+	        }).error(function(response) {
+	            $scope.error = response.message;
+	            console.log($scope.error);
+	        });	
 		};
-
-		$scope.selectedBlog = function() {
-			$scope.blog = Blogs.get({ 
-				blogId: $stateParams.blogId
-			});
+ 
+		$scope.displayBlog = function() {
+			$http.get('/selected').success(function(response){
+				// If successful show success message and clear form
+            	$scope.success = true;
+	            // $scope.appt = response;
+	            console.log(response);
+	             $scope.blog = response;
+	            $scope.blog.blogContent = response.blogContent;
+	            $scope.blog.created= response.created;
+	            $scope.blog.title= response.title;
+	            console.log(response.created);
+	            console.log($scope.blog.title);
+	           
+	        }).error(function(response) {
+	            $scope.error = response.message;
+	            console.log($scope.error);
+	        });	 
 		};
 	}
 ]);
-
-
-
-		// $scope.selectBlog = function(blog) {
-		// 	console.log(blog);
-		// 	console.log($stateParams.blogId);
-
-		// 	$scope.selectedBlog = blog;
-		// 	$scope.selectedBlog.selected = true;
-		// 	var blog = new Blogs ({
-		// 		title: $scope.selectedBlog.title,
-		// 		blogContent: $scope.selectedBlog.blogContent,
-		// 		selected: $scope.selectedBlog.selected,
-		// 		blogId: $stateParams.blogId,
-		// 		Comments: $scope.selectedBlog.comments
-		// 		// ,
-		// 		// likes: $scope.selectedBlog.likes,
-		// 		// created: $scope.selectedBlog.created
-		// 	});
-
-		// 	console.log(blog.blogId);
-			
-		// 	console.log(blog);
-		// 	// Redirect after save
-		// 	// blog.$save(function(response) {
-		// 	// 	console.log(response);
-		// 	// 	console.log('admin/blogs/' + blog.id + '/selected');
-		// 	// }, function(errorResponse) {
-		// 	// 	$scope.error = errorResponse.data.message;
-		// 	// });
-
-		// 	$http.put('/blogs/' + blog.blogId + '/selected').success(function(response){
-		// 		// If successful show success message and clear form
-  //           $scope.success = true;
-
-	 //            // $scope.appt = response;
-	 //            console.log('Success - Done', response);
-	 //        }).error(function(response) {
-	 //            $scope.error = response.message;
-	 //            console.log($scope.error);
-	 //        });
-		// 	// blog.$update(function() {
-		// 	// 	// $location.path('admin/blogs/' + blog.created + );
-		// 	// }, function(errorResponse) {
-		// 	// 	$scope.error = errorResponse.data.message;
-		// 	// });
-
-		// };

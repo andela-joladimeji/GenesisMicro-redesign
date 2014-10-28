@@ -8,14 +8,11 @@
 }
 
 .about-you-div{
-    position: absolute;
-    width: 100%;
-    top: 300px;
+ bottom: 1%;
 }
 
 .about-first-div{
     margin: 30px auto;
-    width: 25%;
     padding: 11px 0;
 }
 
@@ -29,7 +26,6 @@
 
 .about-second-div{
     margin: 30px auto;
-    width: 80%;
     padding: 11px 10px;
 }
 

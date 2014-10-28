@@ -26,4 +26,8 @@ var PageSchema = new Schema({
 	}
 });
 
+
+
+
+
 mongoose.model('Page', PageSchema);

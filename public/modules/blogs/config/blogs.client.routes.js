@@ -17,6 +17,10 @@ angular.module('blogs').config(['$stateProvider',
 			url: '/admin/blogs/:blogId',
 			templateUrl: 'modules/blogs/views/view-blog.client.view.html'
 		}).
+		state('selectedBlog', {
+			url: '/admin/viewBlog',
+			templateUrl: 'modules/blogs/views/selected-blog.client.view.html'
+		}).
 		state('editBlog', {
 			url: '/admin/blogs/:blogId/edit',
 			templateUrl: 'modules/blogs/views/edit-blog.client.view.html'
