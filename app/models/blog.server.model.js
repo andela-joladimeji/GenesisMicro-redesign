@@ -21,19 +21,6 @@ var LikeSchema = new Schema({
 	}
 });
 
-/**
- * InappropriateComment Schema
- */
-var InappropriateCommentSchema = new Schema({
-	judge: {
-		type: Schema.ObjectId,
-		ref: 'User'
-	},
-	created: {
-		type: Date,
-		default: Date.now
-	}
-});
 
 /**
  * Comment Schema
@@ -59,7 +46,10 @@ var CommentSchema = new Schema({
 		default: Date.now
 	},
 	commentLikes: [LikeSchema],
-	inappropriate: [InappropriateCommentSchema]
+	inappropriate: {
+		type: Boolean,
+		default: false
+	}
 });
 
 
@@ -80,6 +70,12 @@ var BlogSchema = new Schema({
 		required: 'Please put in your news for the week',
 		trim: true
 	},
+	caption:{
+		type: String,
+		default: '',
+		required: 'Please put in a caption for your blog',
+		trim: true
+	},
 	created: {
 		type: Date,
 		default: Date.now
@@ -88,6 +84,12 @@ var BlogSchema = new Schema({
 		type: Schema.ObjectId,
 		ref: 'User'
 	},
+	madeBy: {
+		type: String,
+		default: '',
+		required: 'Please fill in the name of the blog author',
+		trim: true
+	},
 	selected: {
 		type: Boolean,
 		default: false
@@ -95,5 +97,6 @@ var BlogSchema = new Schema({
 	comments: [CommentSchema],
 	likes: [LikeSchema]
 });
+
 
 mongoose.model('Blog', BlogSchema);

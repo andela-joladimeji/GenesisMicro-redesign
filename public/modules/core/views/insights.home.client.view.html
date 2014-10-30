@@ -1,8 +1,8 @@
 <section data-ng-controller="HomeController">
-	<div>
+	<div data-ng-controller="BlogsController" data-ng-init="displayBlog()">
 		<div class="insights-div-img">
 	        <div class="insights-div pos-relative">
-	            <div class="insights-text text-center">THE VIEW FROM HIRE GROUND</div>
+	            <div data-ng-bind="blog.caption" class="insights-text text-center text-uppercase"></div>
 	        </div>
 	    </div>
 	    <div class="container">
@@ -11,28 +11,23 @@
 	    			<div>
 		    			<hr>
 			            <ul class="insights-icon">
-			            	<li class="pull-left"><a href="#!/community/2013-10-1-avoidable-mistakes" class="icon-comment"><span class="glyphicon glyphicon-comment"></span>Comments</a></li>
-							<li class="pull-left insights-icon-li"><a href="/#!" class=" icon-like"><i class="fa fa-heart"></i>Likes</a></li>
-							<li class="pull-left insights-icon-li"><a href="/#!" class=" icon-share"><i class="fa fa-share-alt"></i>Share</a></li>
+			            	<li class="pull-left"><a href="#!/community/2013-10-1-avoidable-mistakes" class="icon-comment"><span class="glyphicon glyphicon-comment"></span>&nbsp;{{blog.comments.length}}&nbsp;Comments</a></li>
+
+							<li class="pull-left insights-icon-li"><span class="icon-like"><i data-ng-click="likeBlog()"  class="fa fa-heart"></i>&nbsp;{{blog.likes.length}}&nbsp;Likes</span></li>
+
+							<li class="pull-left insights-icon-li"><span class="icon-share"><i class="fa fa-share-alt"></i>&nbsp;Share</span></li>
+
 							<li class="pull-right"><a href="/#!/community/2013-10-1-avoidable-mistakes" ng-click="showDetails=true" class="insights-view-icon">View Post &rarr;</a></li>
 			            </ul>
 			            <hr class="group">
 			        </div>
 			        <div class="row insights">
 			        	<div class="col-md-4">
-			        		<p>ON THE JOB MARKET? AVOIDABLE MISTAKES ABOUND.</p>
-			        		<p>August 28, 2013</p>
+			        		<h1 class="text-uppercase" data-ng-bind="blog.title"></h1>
+			        		<p data-ng-bind="blog.created | date:longdate"></p>
 			        	</div>
 			            <div class="col-md-8">
-			            	<p>We know looking for a job can seem as complicated as rocket science. We're here to prove it's the simple stuff that makes a difference.</p>
-			            	<p>This story from THE WEEK does a nice job of highlighting the four worst job-hunting tips of all time, and it's worth a read.</p>
-			            	<p>In addition, we'd like to offer our own Top 4 suggestions:</p>
-			            	<h5>THE RESUME</h5>
-			            	<p>1. Take your time with your resume. Write thoughtfully, concisely and above all don't bother embellishing. We recently came across a fellow who had put into his resume every technology that might have been in the same galaxy as the one he had worked in. The not-so-surprising response from the hiring manager was "How could this be real? No one could be good at all of these technologies in one lifetime." (More thoughts on resumes coming in our next blog...stay tuned.)</p>
-			            	<p>2. Explain what you do, how you do it, and where you did it. The better you do that, the better response you'll get. And be specific: for example, list which version of XYZ technology you know; details are key to making your resume stand out.</p>
-							<h5>THE PHONE INTERVIEW</h5>
-							<p>3. Your resume looks great and you landed a phone interview. Congrats! This is your chance to get noticed. We recommend taking the call from a landline. Or, if you have to use your cell phone, make sure you have excellent reception. A bad connection is like having typos on your resume.</p>
-							<p>4. And while you're on that call...make sure to provide examples! It's important for the resume and even more important in the interview. How did you handle that tough situation? How did you use XYZ technology to solve a problem in your last job? Be specific and avoid generalities. It will help the interviewer picture you in the job!</p>
+			            	<p data-ng-bind="blog.blogContent"></p>
 			        	</div>
 			        </div>
 

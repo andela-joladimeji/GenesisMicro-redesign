@@ -23,7 +23,7 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
 			url: '/contact',
 			templateUrl: 'modules/core/views/connect.client.view.html'
 		})
-		.state({'testimonial',
+		.state('testimonial', {
 			url: '/testimonial',
 			templateUrl: 'modules/core/views/testimonial.client.view.html'
 		})

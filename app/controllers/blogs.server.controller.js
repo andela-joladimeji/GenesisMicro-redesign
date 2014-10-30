@@ -108,15 +108,21 @@ exports.selectedOne = function(req, res) {
 
     if (req.user.role === 'admin')
     {
-        Blog.where().update({selected:true},{$set:{selected:false}},{multi:true}).exec(function(err,blog_update){
+        // console.log(req.body.selected);
+        Blog.where().update(
+            {selected:true},
+            {$set:
+                {selected:false}
+            },
+            {multi:true}).exec(function(err,blog_update){
             
-            console.log(blog_update,'update to false');
-            console.log(blog);
+            // console.log(blog_update,'update to false');
+            // console.log(blog);
             if(!err)
             {
-                blog.selected = req.body.selected;
-                // blog.selected = true;
-                console.log(blog);
+                // blog.selected = req.body.selected;
+                blog.selected = true;
+                // console.log(blog);
                 blog = _.extend(blog, req.body);
                 blog.save(function(err) {
                     if (err) {
@@ -137,6 +143,8 @@ exports.selectedOne = function(req, res) {
 };
 
 
+
+
 exports.chosenBlog = function(req, res) {
     Blog.find({selected: true}).populate('user', 'username').exec(function(err, blog) {
 
@@ -152,6 +160,7 @@ exports.chosenBlog = function(req, res) {
     });
    
 };
+
 
 
 

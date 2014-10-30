@@ -49,12 +49,13 @@
                     <span data-ng-bind="authentication.user.displayName"></span> <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
-                    <li>
+                    <li data-ng-show="authentication.user.role==='admin'">
                         <a href="/#!/admin/blogs/create">Create Blog</a>
                     </li>
-                    <li>
+                    <li data-ng-show="authentication.user.role==='admin'">
                         <a href="/#!/admin/blogs">List Blogs</a>
                     </li>
+    
                     <li data-ng-show="authentication.user.provider === 'local'">
                         <a href="/#!/settings/password">Change Password</a>
                     </li>

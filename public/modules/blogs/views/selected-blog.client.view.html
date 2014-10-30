@@ -1,17 +1,17 @@
 <section class="content-margin" data-ng-controller="BlogsController" data-ng-init="displayBlog()">
 	<section class="page-header">
-		<h4>Blog Title:{{blog.title}} <b data-ng-bind="blog.title"></b></h4>{{blog}}
+		<h4>Blog Title: <b data-ng-bind="blog.title"></b></h4>
 	</section>
 	<small>
 		<em class="text-muted">
 			Posted on
 			<span data-ng-bind="blog.created | date:'mediumDate'"></span>
-			by{{blog.user}}
+			by
 			<span data-ng-bind="blog.user.username"></span>
 		</em>
 	</small>
-	<section>{{blogContent}}
-		<p>Blog Body:{{blog.blogContent}} <b data-ng-bind="blog.blogContent"></b></p>
+	<section>
+		<p>Blog Body:<b data-ng-bind="blog.blogContent"></b></p>
     </section>
 	<section class="col-md-12">
         <form class="form-horizontal" data-ng-submit="create()" novalidate>

@@ -1,14 +1,15 @@
 .insights-view-div{
 	background: rgba(199,0,0,.8);
 	height: 400px;
+	margin-top: 74px;
 }
+
 
 .insights-view-text{
 	background: rgba(199,0,0,.8);
 	padding: 15px 20px;
-	position: relative;
 	font-size: 23px;
-	top: 180px;
+	top: 110px;
 	text-align: center;
 	font-weight: 400;
 }

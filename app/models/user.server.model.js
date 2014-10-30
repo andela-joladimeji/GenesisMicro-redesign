@@ -67,7 +67,8 @@ var UserSchema = new Schema({
 		required: 'Provider is required'
 	},
 	role: {
-		type: String
+		type: String,
+		enum: [ 'user', 'admin']
 	},
 	providerData: {},
 	additionalProvidersData: {},

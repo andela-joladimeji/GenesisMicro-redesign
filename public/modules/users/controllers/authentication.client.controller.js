@@ -8,12 +8,22 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$http
 		if ($scope.authentication.user) $location.path('/');
 
 		$scope.signup = function() {
+			if ($scope.securityCode === '12t$*&$)t2g'){
+				console.log($scope.securityCode);
+				$scope.credentials.role= 'admin';
+				console.log($scope.credentials.role);
+			}
+
+			else {
+				$scope.credentials.role= 'user';
+			}
+
 			$http.post('/auth/signup', $scope.credentials).success(function(response) {
 				//If successful we assign the response to the global user model
 				$scope.authentication.user = response;
 
 				//And redirect to the index page
-				$location.path('/');
+				$location.path('/admin/blogs');
 			}).error(function(response) {
 				$scope.error = response.message;
 			});
@@ -23,14 +33,14 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$http
 			$http.post('/auth/signin', $scope.credentials).success(function(response) {
 				//If successful we assign the response to the global user model
 				$scope.authentication.user = response;
-				console.log($scope.authentication.user)
+				console.log($scope.authentication.user);
 				if ($scope.authentication.user.role==='admin'){
 					$location.path('/admin/blogs');
 				}
-				// else{
-				// 	//And redirect to the index page
-				// 	$location.path('/');
-				// }
+				else{
+					//And redirect to the index page
+					$location.path('/');
+				}
 
 			}).error(function(response) {
 				$scope.error = response.message;

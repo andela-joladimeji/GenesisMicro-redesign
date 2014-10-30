@@ -14,13 +14,15 @@ var blogs = require('../../app/controllers/blogs');
 exports.addComment = function(req, res) {
     var blog = req.blog;
     var comment = req.body;
+
     comment.creator = req.user;
     blog.comments.unshift(comment);
 
     blog.save(function(err) {
         if (err) {
+            console.log(err);
             return res.status(400).send({
-                message: blogs.getErrorMessage(err)
+                message: 'comment was not saved'
             });
         }   
         else {
@@ -129,43 +131,30 @@ exports.deleteComment = function(req, res) {
 
 
 exports.inappropriateComment = function(req, res) {
-
-    var markedComment = false; 
+ 
     var blog = req.blog;
+    console.log(req.body);
     var inappropriate = req.body;
     var index = 0;
-    blog.comments[index].inappropriate.judge = req.user;
     console.log(req.user);
 
-    res.jsonp(blog.comments[index].inappropriate);
-// //         var index = 0;
-// //     var blog = req.blog;
-// //         like = req.body;
+    // if
 
-// //         console.log(blog.comments);
-// //         like.liker = req.user;
-// //          // blog.comments[index].inappropriate.push(inappropriate);
-// // }1
-// //     var hasLiked = false; 
-   
-//     if (!markedComment) {
-//         blog.comments[index].inappropriate.push(inappropriate);
-
-//         blog.save(function(err) {
-//            if (err) {
-//                return res.send(400, {
-//                   message: blogs.getErrorMessage(err)
-//                });
-//             } else {
-//                 res.jsonp(blog);
-//             }
-//         });
-//     } 
-//     else {
-//         return res.send(400, {
-//            message: 'you have already marked this comment as inappropriate'
-//         });
-//     }
+    //     blog.save(function(err) {
+    //        if (err) {
+    //            return res.send(400, {
+    //               message: blogs.getErrorMessage(err)
+    //            });
+    //         } else {
+    //             res.jsonp(blog);
+    //         }
+    //     });
+    // } 
+    // else {
+    //     return res.send(400, {
+    //        message: 'you have already marked this comment as inappropriate'
+    //     });
+    // }
     
 };
 

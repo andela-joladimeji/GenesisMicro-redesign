@@ -6,6 +6,7 @@
     <div class="list-group">
         <a data-ng-repeat="blog in blogs" data-ng-href="#!/admin/blogs/{{blog._id}}" class="list-group-item">
             <h3>Blog Title <b data-ng-bind="blog.title "></b></h3>
+            <p>Blog Caption <b data-ng-bind="blog.caption "></b></p>
 			<small class="list-group-item-text">
 				Posted on
 				<span data-ng-bind="blog.created | date:'medium'"></span>
@@ -16,6 +17,7 @@
                 <span data-ng-bind="blog.blogContent | limitTo:200"></span>
                 <span data-ng-show="blog.blogContent.length > 200">...</span>
             </div>
+            <p>Blog Author:<b data-ng-bind="blog.madeBy"></b>></p>
         </a>
     </div>
     <div class="alert alert-warning text-center" data-ng-hide="!blogs.$resolved || blogs.length">

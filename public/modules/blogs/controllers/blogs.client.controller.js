@@ -1,8 +1,8 @@
 'use strict';
 
 // Blogs controller
-angular.module('blogs').controller('BlogsController', ['$scope', '$stateParams', '$location', '$http', 'Authentication', 'Blogs','Comments',
-	function($scope, $stateParams, $location, $http, Authentication, Blogs, Comments) {
+angular.module('blogs').controller('BlogsController', ['$scope', '$stateParams', '$location', '$http', 'Authentication', 'Blogs','Comments', 'Likes',
+	function($scope, $stateParams, $location, $http, Authentication, Blogs, Comments, Likes) {
 		$scope.authentication = Authentication;
 
 		// Create new Blog
@@ -10,10 +10,11 @@ angular.module('blogs').controller('BlogsController', ['$scope', '$stateParams',
 			// Create new Blog object
 			var blog = new Blogs ({
 				title: this.title,
-				blogContent: this.blogContent
+				blogContent: this.blogContent,
+				caption: this.caption,
+				madeBy: this.madeBy
 			});
 
-			console.log(blog);
 			// Redirect after save
 			blog.$save(function(response) {
 				console.log(response);
@@ -27,7 +28,10 @@ angular.module('blogs').controller('BlogsController', ['$scope', '$stateParams',
 			// Clear form fields
 			this.title = '';
 			this.content = '';
+			this.caption = '';
+			this.madeBy = '';
 		};
+
 
 		// Remove existing Blog
 		$scope.remove = function( blog ) {
@@ -66,15 +70,13 @@ angular.module('blogs').controller('BlogsController', ['$scope', '$stateParams',
 			$scope.blog = Blogs.get({ 
 				blogId: $stateParams.blogId
 			});
-			// console.log($scope.blog);
-			// console.log(typeof($scope.blog.selected));
-			// console.log($scope.blog.selected);
 
 		};
 
 		$scope.selectBlog = function(blog_state) {
 			$scope.selectedBlog = blog_state;
 			$scope.selectedBlog.selected = true;
+			console.log($scope.selectedBlog);
 			var blog = new Blogs ({
 				title: $scope.selectedBlog.title,
 				blogContent: $scope.selectedBlog.blogContent,
@@ -98,17 +100,61 @@ angular.module('blogs').controller('BlogsController', ['$scope', '$stateParams',
             	$scope.success = true;
 	            // $scope.appt = response;
 	            console.log(response);
-	             $scope.blog = response;
-	            $scope.blog.blogContent = response.blogContent;
-	            $scope.blog.created= response.created;
-	            $scope.blog.title= response.title;
-	            console.log(response.created);
-	            console.log($scope.blog.title);
+	             $scope.blog = response[0];
+
 	           
 	        }).error(function(response) {
 	            $scope.error = response.message;
 	            console.log($scope.error);
 	        });	 
 		};
+
+		// Create new Blog
+		$scope.createComment = function() {
+			// Create new Blog object
+			var comment = new Comments ({
+				commentContent: this.commentContent,
+				blogId: $scope.blog._id
+	
+			});
+
+			comment.$save(function(response) {
+				console.log(response);
+				$scope.blog = response;
+			}, function(errorResponse) {
+				$scope.error = errorResponse.data.message;
+			});
+			// Clear form fields
+			this.commentContent = '';
+		};
+
+		// / $scope.selectComment = function(){
+				
+		// // };
+
+		// $scope.displayComment = function(){
+
+		// };
+
+
+		$scope.likeBlog = function() {
+			console.log('like');
+			var like = new Likes({
+				blogId: $scope.blog._id,
+				choice: 'like'
+			});
+			console.log('inlike');
+			like.$save(function(response){
+				$scope.liked = true;
+				$scope.blog = response;
+			}, function(errorResponse) {
+				$scope.error = errorResponse.data.message;
+
+			});
+		};
+
+
+		
+
 	}
 ]);

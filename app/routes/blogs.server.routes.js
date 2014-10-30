@@ -7,6 +7,7 @@ var users = require('../../app/controllers/users'),
     blogs = require('../../app/controllers/blogs'),
     comments = require('../../app/controllers/comments');
 
+
 module.exports = function(app) {
 
         //admin only 
@@ -51,6 +52,8 @@ module.exports = function(app) {
 
     // app.route('/blogs/:blogId/comments/:commentId/approved')
     //     .post(users.requiresLogin, comments.hasAuthorization, comments.approvedComment);
+
+
     // Finish by binding the blog middleware
     app.param('blogId', blogs.blogByID);
 
