@@ -11,11 +11,14 @@ var ResumeSchema = new Schema({
         type: Date,
         default: Date.now
     },
-    file: [{
-        path: {
-            type: String
-        }
-    }]
+    name: {
+        type: String,
+        required: 'Please fill in your name'
+    },
+    resumeURL: {
+        type: Array,
+        default: ''
+    }
 });
 
 mongoose.model('Resume', ResumeSchema);
