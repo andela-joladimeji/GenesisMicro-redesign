@@ -7,7 +7,8 @@ var ApplicationConfiguration = function () {
         'ngResource',
         'ui.router',
         'ui.bootstrap',
-        'ui.utils'
+        'ui.utils',
+        'angularFileUpload'
       ];
     // Add a new vertical module
     var registerModule = function (moduleName) {
@@ -106,16 +107,19 @@ angular.module('blogs').config([
   function ($stateProvider) {
     // Blogs state routing
     $stateProvider.state('listBlogs', {
-      url: '/blogs',
+      url: '/admin/blogs',
       templateUrl: 'modules/blogs/views/list-blogs.client.view.html'
     }).state('createBlog', {
-      url: '/blogs/create',
+      url: '/admin/blogs/create',
       templateUrl: 'modules/blogs/views/create-blog.client.view.html'
     }).state('viewBlog', {
-      url: '/blogs/:blogId',
+      url: '/admin/blogs/:blogId',
       templateUrl: 'modules/blogs/views/view-blog.client.view.html'
+    }).state('selectedBlog', {
+      url: '/admin/viewBlog',
+      templateUrl: 'modules/blogs/views/selected-blog.client.view.html'
     }).state('editBlog', {
-      url: '/blogs/:blogId/edit',
+      url: '/admin/blogs/:blogId/edit',
       templateUrl: 'modules/blogs/views/edit-blog.client.view.html'
     });
   }
@@ -125,26 +129,35 @@ angular.module('blogs').controller('BlogsController', [
   '$scope',
   '$stateParams',
   '$location',
+  '$http',
   'Authentication',
   'Blogs',
   'Comments',
-  function ($scope, $stateParams, $location, Authentication, Blogs, Comments) {
+  'Likes',
+  function ($scope, $stateParams, $location, $http, Authentication, Blogs, Comments, Likes) {
     $scope.authentication = Authentication;
     // Create new Blog
     $scope.create = function () {
       // Create new Blog object
       var blog = new Blogs({
-          name: this.title,
-          content: this.content
+          title: this.title,
+          blogContent: this.blogContent,
+          caption: this.caption,
+          madeBy: this.madeBy
         });
       // Redirect after save
       blog.$save(function (response) {
-        $location.path('blogs/' + response._id);
+        console.log(response);
+        console.log('admin/blogs/' + response._id);
+        $location.path('admin/blogs/' + response._id);
       }, function (errorResponse) {
         $scope.error = errorResponse.data.message;
       });
       // Clear form fields
-      this.name = '';
+      this.title = '';
+      this.content = '';
+      this.caption = '';
+      this.madeBy = '';
     };
     // Remove existing Blog
     $scope.remove = function (blog) {
@@ -178,6 +191,72 @@ angular.module('blogs').controller('BlogsController', [
     $scope.findOne = function () {
       $scope.blog = Blogs.get({ blogId: $stateParams.blogId });
     };
+    $scope.selectBlog = function (blog_state) {
+      $scope.selectedBlog = blog_state;
+      $scope.selectedBlog.selected = true;
+      console.log($scope.selectedBlog);
+      var blog = new Blogs({
+          title: $scope.selectedBlog.title,
+          blogContent: $scope.selectedBlog.blogContent,
+          selected: $scope.selectedBlog.selected
+        });
+      console.log(blog);
+      $http.put('/blogs/' + $stateParams.blogId + '/selected', blog).success(function (response) {
+        // If successful show success message and clear form
+        $scope.success = true;
+        // $scope.appt = response;
+        console.log(response);
+      }).error(function (response) {
+        $scope.error = response.message;
+        console.log($scope.error);
+      });
+    };
+    $scope.displayBlog = function () {
+      $http.get('/selected').success(function (response) {
+        // If successful show success message and clear form
+        $scope.success = true;
+        // $scope.appt = response;
+        console.log(response);
+        $scope.blog = response[0];
+      }).error(function (response) {
+        $scope.error = response.message;
+        console.log($scope.error);
+      });
+    };
+    // Create new Blog
+    $scope.createComment = function () {
+      // Create new Blog object
+      var comment = new Comments({
+          commentContent: this.commentContent,
+          blogId: $scope.blog._id
+        });
+      comment.$save(function (response) {
+        console.log(response);
+        $scope.blog = response;
+      }, function (errorResponse) {
+        $scope.error = errorResponse.data.message;
+      });
+      // Clear form fields
+      this.commentContent = '';
+    };
+    // / $scope.selectComment = function(){
+    // // };
+    // $scope.displayComment = function(){
+    // };
+    $scope.likeBlog = function () {
+      console.log('like');
+      var like = new Likes({
+          blogId: $scope.blog._id,
+          choice: 'like'
+        });
+      console.log('inlike');
+      like.$save(function (response) {
+        $scope.liked = true;
+        $scope.blog = response;
+      }, function (errorResponse) {
+        $scope.error = errorResponse.data.message;
+      });
+    };
   }
 ]);// angular.module('core').directive('details', function(){
 //     return {
@@ -199,7 +278,7 @@ angular.module('blogs').factory('Comments', [
   '$resource',
   function ($resource) {
     return $resource('blogs/:blogId/comments/:commentId', {
-      blogId: '@blogid',
+      blogId: '@blogId',
       commentId: '@_id'
     }, { update: { method: 'PUT' } });
   }
@@ -208,9 +287,27 @@ angular.module('blogs').factory('Comments', [
 angular.module('blogs').factory('Likes', [
   '$resource',
   function ($resource) {
-    return $resource('blogs/:blogId', { blogId: '@_id' }, { update: { method: 'PUT' } });
+    return $resource('blogs/:blogId/:choice', {}, {
+      save: {
+        method: 'POST',
+        params: {
+          choice: 'like',
+          blogId: '@blogId'
+        }
+      }
+    });
   }
-]);'use strict';
+]);// angular.module('blogs').factory('SelectedBlog', ['$resource',
+// 	function($resource) {
+// 		return $resource('blogs/:blogId/selected', { blogId: '@blog._id'
+// 		}, {
+// 			update: {
+// 				method: 'PUT'
+// 			}
+// 		});
+// 	}
+// ]);
+'use strict';
 // Setting up route
 angular.module('core').config([
   '$stateProvider',
@@ -228,14 +325,29 @@ angular.module('core').config([
     }).state('about-you', {
       url: '/about-you',
       templateUrl: 'modules/core/views/about-you.client.view.html'
-    }).state('connect', {
+    }).state('contact', {
       url: '/contact',
       templateUrl: 'modules/core/views/connect.client.view.html'
-    }).state('insights', {
-      url: '/insights',
+    }).state('testimonial', {
+      url: '/testimonial',
+      templateUrl: 'modules/core/views/testimonial.client.view.html'
+    }).state('community', {
+      url: '/community',
       templateUrl: 'modules/core/views/insights.home.client.view.html'
-    }).state('insights_blog', {
-      url: '/insights/2013-10-1-avoidable-mistakes',
+    }).state('clientsComments', {
+      url: '/clientsComments',
+      templateUrl: 'modules/core/views/clientsComments.client.view.html'
+    }).state('download', {
+      url: '/download',
+      templateUrl: 'modules/core/views/downloads.client.view.html'
+    }).state('our_vision', {
+      url: '/our_vision',
+      templateUrl: 'modules/core/views/vision.client.view.html'
+    }).state('customer-story', {
+      url: '/customer-success-story',
+      templateUrl: 'modules/core/views/customer-story.view.html'
+    }).state('community_blog', {
+      url: '/community/2013-10-1-avoidable-mistakes',
       templateUrl: 'modules/core/views/insights.2013-10-1-avoidable-mistakes.client.view.html'
     });
   }
@@ -264,7 +376,10 @@ angular.module('core').controller('HomeController', [
   'anchorSmoothScroll',
   '$anchorScroll',
   '$location',
-  function ($scope, $state, Authentication, anchorSmoothScroll, $anchorScroll, $location) {
+  'Resumes',
+  '$upload',
+  '$timeout',
+  function ($scope, $state, Authentication, anchorSmoothScroll, $anchorScroll, $location, Resumes, $upload, $timeout) {
     // This provides Authentication context.
     $scope.authentication = Authentication;
     $scope.$state = $state;
@@ -273,15 +388,88 @@ angular.module('core').controller('HomeController', [
       anchorSmoothScroll.scrollTo(eID);
       $scope.selected = eID;
     };
+    $scope.onFileSelect = function ($files) {
+      $scope.files = $files;
+      // $scope.imageFiles = [];
+      $scope.stringFiles = [];
+      if ($scope.files) {
+        for (var i in $scope.files) {
+          if ($scope.files[0].type === 'application/pdf' || $scope.files[0].type === 'application/msword' || $scope.files[0].type === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' || $scope.files[i].size < 600000) {
+            $scope.correctFormat = true;
+          } else {
+            alert('error');
+            alert('Wrong file format...');
+            $scope.correctFormat = false;
+          }
+          $scope.start(i);
+        }
+      }
+    };
+    $scope.start = function (indexOftheFile) {
+      var formData = {
+          key: $scope.files[indexOftheFile].name,
+          AWSAccessKeyID: 'AKIAIURTOHJ7C726ULIA',
+          acl: 'private',
+          policy: 'ewogICJleHBpcmF0aW9uIjogIjIwMjAtMDEtMDFUMDA6MDA6MDBaIiwKICAiY29uZGl0aW9ucyI6IFsKICAgIHsiYnVja2V0IjogImdlbmVzaXNtaWNybyJ9LAogICAgWyJzdGFydHMtd2l0aCIsICIka2V5IiwgIiJdLAogICAgeyJhY2wiOiAicHJpdmF0ZSJ9LAogICAgWyJzdGFydHMtd2l0aCIsICIkQ29udGVudC1UeXBlIiwgIiJdLAogICAgWyJzdGFydHMtd2l0aCIsICIkZmlsZW5hbWUiLCAiIl0sCiAgICBbImNvbnRlbnQtbGVuZ3RoLXJhbmdlIiwgMCwgNTI0Mjg4MDAwXQogIF0KfQ==',
+          signature: 'JZSwCIPMywXkxDN+PwPg23DuXiM=',
+          filename: $scope.files[indexOftheFile].name,
+          'Content-Type': $scope.files[indexOftheFile].type
+        };
+      $scope.imageFiles[indexOftheFile] = $upload.upload({
+        url: 'https://genesismicro.s3-us-west-2.amazonaws.com',
+        method: 'POST',
+        headers: { 'Content-Type': $scope.files[indexOftheFile].type },
+        data: formData,
+        file: $scope.files[indexOftheFile]
+      });
+      console.log(indexOftheFile);
+      $scope.imageFiles[indexOftheFile].then(function (response) {
+        $timeout(function () {
+          $scope.loading = false;
+          //alert('uploaded');
+          var resumeURL = 'https://genesismicro.s3-us-west-2.amazonaws.com' + $scope.files[indexOftheFile].name;
+          $scope.stringFiles.push(resumeURL);
+        });
+      }, function (response) {
+        console.log(response);
+        if (response.status > 0)
+          $scope.errorMsg = response.status + ': ' + response.data;
+        alert('Connection Timed out');
+      }, function (evt) {
+      });  // console.log($scope.imageFiles[indexOftheFile]);
+           // $scope.imageFiles[indexOftheFile].xhr(function(xhr) {
+           //     //alert('xhr');
+           // });
+    };
+    $scope.uploadResume = function () {
+      // $scope.onFileSelect($files);
+      var resume = new Resumes({
+          name: this.name,
+          resumeURL: $scope.stringFiles
+        });
+      resume.$save(function (response) {
+        $location.path('/');
+      }, function (errorResponse) {
+        $scope.error = errorResponse.data.message;
+        console.log('saved');
+      });
+    };
     $scope.showDetails = false;
+    $scope.showLocation = function () {
+      $scope.displayLocation = !$scope.displayLocation;
+    };
+    $scope.hideLocation = function () {
+      $scope.displayLocation = false;
+      console.log('hide');
+    };
     //    $(window).scroll(function() {
-    // 	clearTimeout(scrollTimeout);
-    // 	if ($(window).scrollTop() > 400) {
-    // 		scrollTimeout = setTimeout(function(){$('a.scroll-top:hidden').fadeIn()}, 100);
-    // 	} 
-    // 	else {
-    // 		scrollTimeout = setTimeout(function(){$('a.scroll-top:visible').fadeOut()}, 100);
-    // 	}
+    //  clearTimeout(scrollTimeout);
+    //  if ($(window).scrollTop() > 400) {
+    //      scrollTimeout = setTimeout(function(){$('a.scroll-top:hidden').fadeIn()}, 100);
+    //  } 
+    //  else {
+    //      scrollTimeout = setTimeout(function(){$('a.scroll-top:visible').fadeOut()}, 100);
+    //  }
     // });
     // $('#sidebar').scrollspy();
     $scope.gotoTop = function () {
@@ -489,7 +677,7 @@ angular.module('core').service('anchorSmoothScroll', function () {
       var elm = document.getElementById(eID);
       var y = elm.offsetTop;
       var node = elm;
-      while (node.offsetParent && node.offsetParent != document.body) {
+      while (node.offsetParent && node.offsetParent !== document.body) {
         node = node.offsetParent;
         y += node.offsetTop;
       }
@@ -497,6 +685,13 @@ angular.module('core').service('anchorSmoothScroll', function () {
     }
   };
 });'use strict';
+//Blogs service used to communicate Blogs REST endpoints
+angular.module('core').factory('Resumes', [
+  '$resource',
+  function ($resource) {
+    return $resource('resumes/:resumeId', { resumeId: '@_id' }, { update: { method: 'PUT' } });
+  }
+]);'use strict';
 // Config HTTP Error Handling
 angular.module('users').config([
   '$httpProvider',
@@ -561,11 +756,18 @@ angular.module('users').controller('AuthenticationController', [
     if ($scope.authentication.user)
       $location.path('/');
     $scope.signup = function () {
+      if ($scope.securityCode === '12t$*&$)t2g') {
+        console.log($scope.securityCode);
+        $scope.credentials.role = 'admin';
+        console.log($scope.credentials.role);
+      } else {
+        $scope.credentials.role = 'user';
+      }
       $http.post('/auth/signup', $scope.credentials).success(function (response) {
         //If successful we assign the response to the global user model
         $scope.authentication.user = response;
         //And redirect to the index page
-        $location.path('/');
+        $location.path('/admin/blogs');
       }).error(function (response) {
         $scope.error = response.message;
       });
@@ -574,8 +776,13 @@ angular.module('users').controller('AuthenticationController', [
       $http.post('/auth/signin', $scope.credentials).success(function (response) {
         //If successful we assign the response to the global user model
         $scope.authentication.user = response;
-        //And redirect to the index page
-        $location.path('/');
+        console.log($scope.authentication.user);
+        if ($scope.authentication.user.role === 'admin') {
+          $location.path('/admin/blogs');
+        } else {
+          //And redirect to the index page
+          $location.path('/');
+        }
       }).error(function (response) {
         $scope.error = response.message;
       });
