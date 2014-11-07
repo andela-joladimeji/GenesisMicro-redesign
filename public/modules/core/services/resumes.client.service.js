@@ -12,3 +12,14 @@ angular.module('core').factory('Resumes', ['$resource',
         });
     }
 ]);
+angular.module('core').factory('ContactForms', ['$resource',
+	function($resource){
+		return $resource('/contactForm', {},	
+		{
+			update: {
+				method: 'PUT'
+			}
+		});
+	}
+]);
+

@@ -13,7 +13,7 @@ var ResumeSchema = new Schema({
     },
     name: {
         type: String,
-        required: 'Please fill in your name'
+        required: 'Please fill in a name'
     },
     resumeURL: {
         type: Array,

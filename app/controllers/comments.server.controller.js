@@ -24,37 +24,34 @@ exports.addComment = function(req, res) {
             return res.status(400).send({
                 message: 'comment was not saved'
             });
-        }   
-        else {
+        } else {
             res.jsonp(blog);
         }
     });
 };
 
- 
- /**
+
+/**
  * Delete a comment
  */
 exports.deleteComment = function(req, res) {
     if (req.user.role === 'admin') {
-   
+
         var blog = req.blog;
 
         blog.comments.id(req.params.commentId).remove();
         // blog.comments.id(id).remove();
 
-        blog.save(function(err){
-            if(err) {
+        blog.save(function(err) {
+            if (err) {
                 return res.status(400).send({
                     message: 'comment delete failed'
                 });
-            }
-            else{
+            } else {
                 res.jsonp(blog);
             }
         });
-    }
-     else{
+    } else {
         return res.status(401).send({
             message: 'User is not authorized'
         });
@@ -62,55 +59,86 @@ exports.deleteComment = function(req, res) {
 };
 
 
-// exports.likeComment = function(req, res) {
-//     var index = 0;
-//     var blog = req.blog;
-//         like = req.body;
+exports.likeComment = function(req, res) {
+    var index = 0;
 
-//         console.log(blog.comments);
-//         like.liker = req.user;
-//          // blog.comments[index].inappropriate.push(inappropriate);
-// }
-//     var hasLiked = false; 
+    var blog = req.blog;
+    var like = req.body;
+
+    like.liker = req.user;
+
+
+    var hasLikedComment = false;
+
+    if (req.user.id === blog.comments.id(req.params.commentId).creator) {
+        return res.send(400, {
+            message: 'You cannot like your own comment'
+        });
+    } 
+
+
+    else {
+        
+        for (var i = 0; i < blog.comments.id(req.params.commentId).commentLikes.length; i++) {
+            if (req.user.id === blog.comments.id(req.params.commentId).commentLikes[i].liker.toString()) {
+                hasLikedComment = true;
+                break;
+            }
+        }
+
+
+        if (!hasLikedComment) {
+            blog.comments.id(req.params.commentId).commentLikes.push(like);
+
+            blog.save(function(err) {
+                if (err) {
+                    return res.send(400, {
+                        message: blogs.getErrorMessage(err)
+                    });
+                } else {
+                    res.jsonp(blog.comments.id(req.params.commentId));
+                }
+            });
+        } 
+        
+        else {
+            return res.send(400, {
+                message: 'you have already liked this post before'
+            });
+        }
+    }
+
+};
+
+
+
+exports.inappropriateComment = function(req, res) {
+  
+    var blog = req.blog;
+    var comment = blog.comments.id(req.params.commentId);
     
-//     if (req.user.id === blog.user._id.toString()) { 
-//         return res.send(400, {
-//                message: 'You cannot like your own post'
-//         });
-//     } else {
-//         for(var i = 0; i < blog.comments[index].commentLikes.length; i++) {
-//            if (req.user.id === blog.comments[index].commentLikes[i].user.toString()) {
-//                hasLiked = true;
-//                break;
-//             }
-//         }
-//         if (!hasLiked) {
-//             blog.likes.push(like);
+    comment.status = req.body.status;
+    
+    console.log(blog.comments.id(req.params.commentId).status);
+    blog.save(function(err) {
+       if (err) {
+           return res.status(400).send({
+              message: 'bad request'
+           });
+        } else {
+            res.jsonp(comment);
+        }
+    });
+};
 
-//             blog.save(function(err) {
-//                if (err) {
-//                    return res.send(400, {
-//                       message: blogs.getErrorMessage(err)
-//                    });
-//                 } else {
-//                     res.jsonp(blog);
-//                 }
-//             });
-//         } 
-//         else {
-//             return res.send(400, {
-//                message: 'you have already liked this post before'
-//             });
-//         }
-//     }
 
-//  };
+
 
 // exports.approvedComment = function(){
 //     var blog = req.blog;
 //     // var blog.comments.comment.status = 0;
 //     var approvedComment = req.body;
-    
+
 //     if (req.user.role === 'admin'){
 //         // blog.comments.comment.status = 1;
 //         blog.save(function(err) {
@@ -129,34 +157,6 @@ exports.deleteComment = function(req, res) {
 
 
 
-
-exports.inappropriateComment = function(req, res) {
- 
-    var blog = req.blog;
-    console.log(req.body);
-    var inappropriate = req.body;
-    var index = 0;
-    console.log(req.user);
-
-    // if
-
-    //     blog.save(function(err) {
-    //        if (err) {
-    //            return res.send(400, {
-    //               message: blogs.getErrorMessage(err)
-    //            });
-    //         } else {
-    //             res.jsonp(blog);
-    //         }
-    //     });
-    // } 
-    // else {
-    //     return res.send(400, {
-    //        message: 'you have already marked this comment as inappropriate'
-    //     });
-    // }
-    
-};
 
 /**
  * Comment middleware

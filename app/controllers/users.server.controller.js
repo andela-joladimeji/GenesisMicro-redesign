@@ -39,12 +39,20 @@ exports.signup = function(req, res) {
     // Init Variables
     var user = new User(req.body);
 
+    if (user.securityCode === '12t$*&$)t2g'){
+        user.role= 'admin';
+    }
+
+    else {
+        user.role= 'user';
+    }
+
+
     var message = null;
 
     // Add missing user fields
     user.provider = 'local';
     user.displayName = user.firstName + ' ' + user.lastName;
-    console.log(req.body.role);
 
 
     // Then save the user 
@@ -53,11 +61,13 @@ exports.signup = function(req, res) {
             return res.send(400, {
                 message: getErrorMessage(err)
             });
-        } else {
+        } 
+
+        else {
             // Remove sensitive data before login
             user.password = undefined;
             user.salt = undefined;
-
+            
             req.login(user, function(err) {
                 if (err) {
                     res.send(400, err);

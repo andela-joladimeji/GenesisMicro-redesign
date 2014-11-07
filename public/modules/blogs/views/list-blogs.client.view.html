@@ -25,3 +25,28 @@
     </div>
 </section>
 
+<!-- 
+    </div> 
+        <div class="addItems" data-ng-repeat="item in list.items">
+            <div id="itemType"><p>{{item.itemType | uppercase}}</p></div>
+            <div id="textDiv"><p>
+                <input class="col-md-offset-1 col-md-10" id="textField" type="text" data-ng-model='item.itemTitle' placeholder='Item Title'></p><br>
+            </div>
+            
+                <p><textarea id="itemDescription" type='text' data-ng-model='item.itemDescription' placeholder='Item Description'></p></textarea>
+            
+            <div><p>
+                <textarea type='picture' id="pictureLink" data-ng-model='item.itemImageUrl' placeholder='Image Link' data-ng-if="item.itemType ==='picture'"></textarea></p>
+            </div>
+            <div><p>
+                <input type='video' data-ng-model='item.itemVideoUrl' data-ng-if="item.itemType==='video'"placeholder='Video Link'/></p>
+            </div><br>
+             <div id="deletebutton">
+                <input type='button' ng-click='removeItem($index)' value='Delete Item' class='btn btn-ok'/>
+            </div>                                
+        </div><br>
+        <div id="buttons">
+            <input type='button' ng-click='addText()' value='Add Text' class='btn btn-ok'/> 
+            <input type='button' ng-click='addPicture()' class='btn btn-info' value='Add Image'/> 
+            <input type='button' ng-click='addVideo()' value='Add Video' class='btn btn-warning'/>
+        </div> -->

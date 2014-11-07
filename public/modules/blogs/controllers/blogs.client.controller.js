@@ -82,7 +82,7 @@ angular.module('blogs').controller('BlogsController', ['$scope', '$stateParams',
 				blogContent: $scope.selectedBlog.blogContent,
 				selected: $scope.selectedBlog.selected
 			});
-			console.log(blog);
+			
 			$http.put('/blogs/' + $stateParams.blogId + '/selected', blog).success(function(response){
 				// If successful show success message and clear form
             	$scope.success = true;
@@ -127,15 +127,6 @@ angular.module('blogs').controller('BlogsController', ['$scope', '$stateParams',
 			// Clear form fields
 			this.commentContent = '';
 		};
-
-		// / $scope.selectComment = function(){
-				
-		// // };
-
-		// $scope.displayComment = function(){
-
-		// };
-
 
 		$scope.likeBlog = function() {
 			console.log('like');

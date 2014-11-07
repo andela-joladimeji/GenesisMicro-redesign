@@ -37,10 +37,10 @@ var getErrorMessage = function(err) {
  */
 exports.create = function(req, res) {
 
-    if (req.user.role ==='admin'){
+    if (req.user.role === 'admin') {
         var blog = new Blog(req.body);
         blog.user = req.user;
-   
+
         blog.save(function(err) {
             if (err) {
                 return res.status(400).send({
@@ -50,23 +50,22 @@ exports.create = function(req, res) {
                 res.jsonp(blog);
             }
         });
-    }else{
+    } else {
         return res.status(401).send({
             message: 'User is not authorized'
         });
     }
-    
+
 };
 
 /**
  * Show the current blog
  */
 exports.read = function(req, res) {
-    if (req.user.role ==='admin'){
+    if (req.user.role === 'admin') {
         res.jsonp(req.blog);
-    } 
-    else{
-         return res.status(401).send({
+    } else {
+        return res.status(401).send({
             message: 'User is not authorized'
         });
     }
@@ -76,8 +75,8 @@ exports.read = function(req, res) {
  * Update a blog
  */
 exports.update = function(req, res) {
-    if (req.user.role === 'admin'){
-        
+    if (req.user.role === 'admin') {
+
         var blog = req.blog;
 
         blog = _.extend(blog, req.body);
@@ -91,9 +90,8 @@ exports.update = function(req, res) {
                 res.jsonp(blog);
             }
         });
-    }
-    else{
-         return res.status(401).send({
+    } else {
+        return res.status(401).send({
             message: 'User is not authorized'
         });
     }
@@ -102,27 +100,23 @@ exports.update = function(req, res) {
 
 exports.selectedOne = function(req, res) {
     var blog = req.blog;
-    // var blogs;
-    // console.log(blogs);
-    // for (blog in blogs)
 
-    if (req.user.role === 'admin')
-    {
-        // console.log(req.body.selected);
-        Blog.where().update(
-            {selected:true},
-            {$set:
-                {selected:false}
-            },
-            {multi:true}).exec(function(err,blog_update){
-            
-            // console.log(blog_update,'update to false');
-            // console.log(blog);
-            if(!err)
-            {
-                // blog.selected = req.body.selected;
+    if (req.user.role === 'admin') {
+       
+        Blog.where().update({
+            selected: true
+        }, {
+            $set: {
+                selected: false
+            }
+        }, {
+            multi: true
+        }).exec(function(err, blog_update) {
+
+            if (!err) {
+
                 blog.selected = true;
-                // console.log(blog);
+                
                 blog = _.extend(blog, req.body);
                 blog.save(function(err) {
                     if (err) {
@@ -132,33 +126,32 @@ exports.selectedOne = function(req, res) {
                     } else {
 
                         res.jsonp(blog);
-                        console.log(blog);
                     }
                 });
-            }           
+            }
         });
-        
+
     }
-    
+
 };
 
 
 
 
 exports.chosenBlog = function(req, res) {
-    Blog.find({selected: true}).populate('user', 'username').exec(function(err, blog) {
+    Blog.find({
+        selected: true
+    }).populate('user', 'username').exec(function(err, blog) {
 
         if (err) {
             return res.status(400).send({
                 message: getErrorMessage(err)
             });
-        } 
-        else {
-            res.jsonp(blog); 
-            console.log(blog);
+        } else {
+            res.jsonp(blog);
         }
     });
-   
+
 };
 
 
@@ -170,7 +163,7 @@ exports.chosenBlog = function(req, res) {
  * Delete a blog
  */
 exports.delete = function(req, res) {
-    if (req.user.role ==='admin'){
+    if (req.user.role === 'admin') {
 
         var blog = req.blog;
 
@@ -183,9 +176,7 @@ exports.delete = function(req, res) {
                 res.jsonp(blog);
             }
         });
-    }  
-
-    else{
+    } else {
         return res.status(401).send({
             message: 'User is not authorized'
         });
@@ -197,7 +188,7 @@ exports.delete = function(req, res) {
  */
 exports.list = function(req, res, next) {
     if (req.user.role === 'admin') {
-        
+
         Blog.find().sort('-created').populate('user', 'username').exec(function(err, blogs) {
             if (err) {
                 return res.status(400).send({
@@ -207,57 +198,55 @@ exports.list = function(req, res, next) {
                 res.jsonp(blogs);
             }
         });
-    }
-    else{
+    } else {
         return res.status(401).send({
             message: 'User is not authorized'
         });
     }
 };
 
- /**
+/**
  * Like a Post
  */
- exports.likePost = function(req, res) {
+exports.likePost = function(req, res) {
     var blog = req.blog,
         like = req.body;
-        like.liker = req.user;
-    var hasLiked = false; 
-    
-    if (req.user.id === blog.user._id.toString()) { 
+    like.liker = req.user;
+    var hasLiked = false;
+
+    if (req.user.id === blog.user._id.toString()) {
         return res.status(400).send({
             message: 'You cannot like your own post'
         });
     } else {
-        for(var i = 0; i < blog.likes.length; i++) {
-           if (req.user.id === blog.likes[i].user.toString()) {
-               hasLiked = true;
-               break;
+        for (var i = 0; i < blog.likes.length; i++) {
+            if (req.user.id === blog.likes[i].user.toString()) {
+                hasLiked = true;
+                break;
             }
         }
         if (!hasLiked) {
             blog.likes.push(like);
 
             blog.save(function(err) {
-               if (err) {
+                if (err) {
                     return res.status(400).send({
-                       message: getErrorMessage(err)
-                   });
+                        message: getErrorMessage(err)
+                    });
                 } else {
                     res.jsonp(blog);
                 }
             });
-        } 
-        else {
+        } else {
             return res.status(400).send({
-               message: 'you have already liked this post before'
+                message: 'you have already liked this post before'
             });
         }
     }
 
- };
+};
 
- 
+
 /**
  * Blog middleware
  */
@@ -281,4 +270,3 @@ exports.hasAuthorization = function(req, res, next) {
     }
     next();
 };
-

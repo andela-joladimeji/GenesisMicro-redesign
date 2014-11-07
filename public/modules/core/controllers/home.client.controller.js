@@ -1,8 +1,8 @@
 'use strict';
 
 
-angular.module('core').controller('HomeController', ['$scope', '$state', 'Authentication', 'anchorSmoothScroll', '$anchorScroll', '$location', 'Resumes', '$upload', '$timeout',
-    function($scope, $state, Authentication, anchorSmoothScroll, $anchorScroll, $location, Resumes, $upload, $timeout) {
+angular.module('core').controller('HomeController', ['$scope', '$state', 'Authentication', 'ContactForms', 'anchorSmoothScroll', '$anchorScroll', '$location', 'Resumes', '$upload', '$timeout', '$http',
+    function($scope, $state, Authentication, ContactForms, anchorSmoothScroll, $anchorScroll, $location, Resumes, $upload, $timeout, $http) {
         // This provides Authentication context.
         $scope.authentication = Authentication;
         $scope.$state = $state;
@@ -19,7 +19,7 @@ angular.module('core').controller('HomeController', ['$scope', '$state', 'Authen
 
         $scope.onFileSelect = function($files) {
             $scope.files = $files;
-            // $scope.imageFiles = [];
+            $scope.imageFiles = [];
             $scope.stringFiles = [];
             if ($scope.files) {
                 for (var i in $scope.files) {
@@ -62,8 +62,9 @@ angular.module('core').controller('HomeController', ['$scope', '$state', 'Authen
                 $timeout(function() {
                     $scope.loading = false;
                     //alert('uploaded');
-                    var resumeURL = 'https://genesismicro.s3-us-west-2.amazonaws.com' + $scope.files[indexOftheFile].name;
+                    var resumeURL = 'https://genesismicro.s3-us-west-2.amazonaws.com' + '/' + $scope.files[indexOftheFile].name;
                     $scope.stringFiles.push(resumeURL);
+                    console.log(resumeURL);
                 });
             }, function(response) {
                 console.log(response);
@@ -92,7 +93,9 @@ angular.module('core').controller('HomeController', ['$scope', '$state', 'Authen
             });
 
             resume.$save(function(response) {
+
                 $location.path('/');
+                console.log('1');
             }, function(errorResponse) {
                 $scope.error = errorResponse.data.message;
                 console.log("saved");
@@ -100,7 +103,11 @@ angular.module('core').controller('HomeController', ['$scope', '$state', 'Authen
 
         };
 
-
+        $scope.createForm= function (){
+            var s = document.createElement('script');
+            s.src = "https://leads-capturer.futuresimple.com/embed.js?token=2b3e1d76dc4c229bf4d74fa183eac8d0";
+            document.getElementById('contactForm').appendChild(s);
+        };
 
 
         $scope.showDetails = false;
@@ -130,17 +137,46 @@ angular.module('core').controller('HomeController', ['$scope', '$state', 'Authen
             $location.hash('top');
             $anchorScroll();
         };
+
+        
+
+        $scope.sendData = function() {
+            var contactForm= new ContactForms ({
+                firstName: this.first_name,
+                lastName: this.last_name,
+                email: this.email,
+                subject: this.subject,
+                message: this.message
+            });
+
+            console.log(contactForm);
+
+            // Redirect after save
+            contactForm.$save(function(response) {
+                console.log(response);
+    
+
+                $location.path('/contact');
+            }, function(errorResponse) {
+                $scope.error = errorResponse.data.message;
+            });
+        };
+
+
+        
+
+        /*
+            $scope.location.places= [];
+            $scope.
+        */
     }
-]);
+])
 
-angular.module('core').controller('InsightController', ['$scope', 'Authentication',
-    function($scope, Authentication) {
-
-    }
-]);
-
-angular.module('core').controller('InsightDetailsController', ['$scope', 'Authentication',
-    function($scope, Authentication) {
-
-    }
-]);
+.directive('loadScript', function() {
+    return {
+        restrict:'E',
+        link: function(scope, element, attrs) {
+            angular.element('<script src="https://leads-capturer.futuresimple.com/embed.js?token=2b3e1d76dc4c229bf4d74fa183eac8d0"></script>').appendTo(element);
+        }
+    };
+});

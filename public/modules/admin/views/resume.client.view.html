@@ -1,0 +1,15 @@
+<section class="content-margin container" data-ng-controller="AdminController">
+    <div>
+        resume page
+    </div>
+    <div data-ng-repeat="resume in resumes">
+        <p>
+            <a href="{{resume.resumeURL[$index]}}" download="{{resume.name + ' resume'}}">
+                <span data-ng-bind="resume.resumeURL"></span>
+            </a>
+            <span data-ng-bind="resume.name"></span>
+        </p>
+
+    </div>
+
+</section>

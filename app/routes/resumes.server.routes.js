@@ -18,6 +18,9 @@ module.exports = function(app) {
         .get(resumes.read)
         .delete(users.requiresLogin, resumes.hasAuthorization,  users.checkPermission, resumes.delete);
 
+    app.route('/contactForm')
+        .post(resumes.createForm);
+
     // Finish by binding the resume middleware
     app.param('resumeId', resumes.resumeByID);
 };

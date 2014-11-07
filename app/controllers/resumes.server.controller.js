@@ -5,6 +5,7 @@
  */
 var mongoose = require('mongoose'),
     Resume = mongoose.model('Resume'),
+    ContactForm = mongoose.model('ContactForm'),
     _ = require('lodash');
 
 /**
@@ -30,6 +31,26 @@ var getErrorMessage = function(err) {
 
     return message;
 };
+
+
+exports.createForm = function(req, res) {
+    console.log('in res');
+    var contactForm = new ContactForm(req.body);
+    console.log(req.body);
+    // resume.user = req.user;
+
+    contactForm.save(function(err) {
+        if (err) {
+            return res.send(400, {
+                message: getErrorMessage(err)
+            });
+        } else {
+            res.jsonp(contactForm);
+        }
+    });
+};
+
+
 
 /**
  * Create a Resume
@@ -61,6 +82,7 @@ exports.read = function(req, res) {
  */
 exports.update = function(req, res) {
     var resume = req.resume;
+    console.log(resume);
 
     resume = _.extend(resume, req.body);
 
@@ -128,3 +150,49 @@ exports.hasAuthorization = function(req, res, next) {
     }
     next();
 };
+
+
+// $scope.list ={};
+//     $scope.list.items = [];
+//     // var items = 
+//     [{itemType: 'text',
+ //    itemType: 'picture', 
+ //    itemType: 'video'}]
+//     $scope.addText = function() {
+//         $scope.list.items.push({itemType: 'text', itemTitle: '', itemDescription: ''});
+//     };
+
+//     $scope.addPicture = function() {
+//         $scope.list.items.push({itemType: 'picture', itemTitle: '', itemImageUrl: '', itemDescription:''});
+//     };
+
+//     $scope.addVideo = function() {
+//         $scope.list.items.push({itemType: 'video', itemTitle: '', itemVideoUrl: '', itemDescription:''});
+//     };
+
+// // function removeItemFromList(itemType)
+// {
+//  for(var i in $scope.items)
+//  {
+//      if($scope.items[i].itemType.indexOf(itemType)===0)
+//          $scope.items.splice(i,1);
+//  }
+// }
+// $scope.textState = false;
+
+// $scope.showTextFieldSet = function(){
+//  $scope.textState = !$scope.textState;
+// };
+
+
+// $scope.pictureState = false;
+
+// $scope.showPictureFieldSet = function(){
+//  $scope.pictureState = !$scope.pictureState;
+// };
+// $scope.videoState = false;
+
+// $scope.showVideoFieldSet = function(){
+//  $scope.videoState = !$scope.videoState;
+// };
+
